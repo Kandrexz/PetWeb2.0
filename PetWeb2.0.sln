@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetWeb2.0", "PetWeb2.0\PetWeb2.0.csproj", "{39868604-0A4A-4FA6-8872-7C3B03E1982D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39868604-0A4A-4FA6-8872-7C3B03E1982D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39868604-0A4A-4FA6-8872-7C3B03E1982D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39868604-0A4A-4FA6-8872-7C3B03E1982D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39868604-0A4A-4FA6-8872-7C3B03E1982D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26DE649C-B940-4366-AB3B-E9A79D11CF76}
+	EndGlobalSection
+EndGlobal
