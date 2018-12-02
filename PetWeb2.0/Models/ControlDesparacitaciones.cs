@@ -20,9 +20,9 @@ namespace PetWeb2._0.Models
         public System.DateTime Fecha { get; set; }
         public System.DateTime ProximaFecha { get; set; }
         public System.TimeSpan Hora { get; set; }
-        public string Vacuna { get; set; }
         public string Dosis { get; set; }
         public string ViaAdministracion { get; set; }
+        public string Desparacitador { get; set; }
     
         public virtual AtencionVeterinaria AtencionVeterinaria { get; set; }
     }

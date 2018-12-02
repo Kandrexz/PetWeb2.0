@@ -22,9 +22,10 @@ namespace PetWeb2._0.Models
             this.Ubicacion = new HashSet<Ubicacion>();
         }
     
-        public int Id { get; set; }
         public int Rut { get; set; }
         public string Correo { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contacto> Contacto { get; set; }

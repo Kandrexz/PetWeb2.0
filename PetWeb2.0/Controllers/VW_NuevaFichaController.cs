@@ -10,118 +10,121 @@ using PetWeb2._0.Models;
 
 namespace PetWeb2._0.Controllers
 {
-    public class UbicacionsController : Controller
+    public class VW_NuevaFichaController : Controller
     {
         private PetWebEntities db = new PetWebEntities();
 
-        // GET: Ubicacions
+        // GET: VW_NuevaFicha
         public ActionResult Index()
         {
-            var ubicacion = db.Ubicacion.Include(u => u.DueñoMascota).Include(u => u.Sucursal1);
-            return View(ubicacion.ToList());
+            return View(db.VW_NuevaFicha.ToList());
         }
 
-        // GET: Ubicacions/Details/5
+        // GET: VW_NuevaFicha/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ubicacion ubicacion = db.Ubicacion.Find(id);
-            if (ubicacion == null)
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(id);
+            if (vW_NuevaFicha == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicacion);
+            return View(vW_NuevaFicha);
+        }
+        /*Metodo que recibe el parametro desde la vista  */
+        public ActionResult View(int? Rut)
+        {
+            if (Rut == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(Rut);
+            if (vW_NuevaFicha == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(vW_NuevaFicha);
         }
 
-        // GET: Ubicacions/Create
+        // GET: VW_NuevaFicha/Create
         public ActionResult Create()
         {
-            ViewBag.RutCliente = new SelectList(db.DueñoMascota, "Id", "Correo");
-            ViewBag.IdCliente = new SelectList(db.DueñoMascota, "Id", "Correo");
-            ViewBag.Sucursal = new SelectList(db.Sucursal, "Id", "Usuario");
             return View();
         }
 
-        // POST: Ubicacions/Create
+        // POST: VW_NuevaFicha/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Sucursal,IdCliente,RutCliente,Region,Ciudad,Calle,Numero")] Ubicacion ubicacion)
+        public ActionResult Create([Bind(Include = "Nombre,Apellido,Rut,Fono_Contacto,Region,Ciudad,Calle,Numero,Nombre_Mascota,Microchip,FechaNacimiento,Peso,Sexo,Tipo,Raza")] VW_NuevaFicha vW_NuevaFicha)
         {
             if (ModelState.IsValid)
             {
-                db.Ubicacion.Add(ubicacion);
+                db.VW_NuevaFicha.Add(vW_NuevaFicha);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RutCliente = new SelectList(db.DueñoMascota, "Id", "Correo", ubicacion.IdCliente);
-            ViewBag.IdCliente = new SelectList(db.DueñoMascota, "Id", "Correo", ubicacion.IdCliente);
-            ViewBag.Sucursal = new SelectList(db.Sucursal, "Id", "Usuario", ubicacion.Sucursal);
-            return PartialView(ubicacion);
+            return View(vW_NuevaFicha);
         }
 
-        // GET: Ubicacions/Edit/5
+        // GET: VW_NuevaFicha/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ubicacion ubicacion = db.Ubicacion.Find(id);
-            if (ubicacion == null)
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(id);
+            if (vW_NuevaFicha == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCliente = new SelectList(db.DueñoMascota, "Id", "Correo", ubicacion.IdCliente);
-            ViewBag.Sucursal = new SelectList(db.Sucursal, "Id", "Usuario", ubicacion.Sucursal);
-            return View(ubicacion);
+            return View(vW_NuevaFicha);
         }
 
-        // POST: Ubicacions/Edit/5
+        // POST: VW_NuevaFicha/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Sucursal,IdCliente,RutCliente,Region,Ciudad,Calle,Numero")] Ubicacion ubicacion)
+        public ActionResult Edit([Bind(Include = "Nombre,Apellido,Rut,Fono_Contacto,Region,Ciudad,Calle,Numero,Nombre_Mascota,Microchip,FechaNacimiento,Peso,Sexo,Tipo,Raza")] VW_NuevaFicha vW_NuevaFicha)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ubicacion).State = EntityState.Modified;
+                db.Entry(vW_NuevaFicha).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCliente = new SelectList(db.DueñoMascota, "Id", "Correo", ubicacion.IdCliente);
-            ViewBag.Sucursal = new SelectList(db.Sucursal, "Id", "Usuario", ubicacion.Sucursal);
-            return View(ubicacion);
+            return View(vW_NuevaFicha);
         }
 
-        // GET: Ubicacions/Delete/5
+        // GET: VW_NuevaFicha/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ubicacion ubicacion = db.Ubicacion.Find(id);
-            if (ubicacion == null)
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(id);
+            if (vW_NuevaFicha == null)
             {
                 return HttpNotFound();
             }
-            return View(ubicacion);
+            return View(vW_NuevaFicha);
         }
 
-        // POST: Ubicacions/Delete/5
+        // POST: VW_NuevaFicha/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Ubicacion ubicacion = db.Ubicacion.Find(id);
-            db.Ubicacion.Remove(ubicacion);
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(id);
+            db.VW_NuevaFicha.Remove(vW_NuevaFicha);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

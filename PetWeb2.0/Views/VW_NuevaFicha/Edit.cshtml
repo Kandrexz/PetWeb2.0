@@ -1,0 +1,75 @@
+﻿@model PetWeb2._0.Models.VW_NuevaFicha
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_ViewStart.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>VW_NuevaFicha</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Rut)
+
+        @Html.HiddenFor(model => model.Fono_Contacto)
+
+        @Html.HiddenFor(model => model.Region)
+
+        @Html.HiddenFor(model => model.Ciudad)
+
+        @Html.HiddenFor(model => model.Calle)
+
+        @Html.HiddenFor(model => model.Numero)
+
+        @Html.HiddenFor(model => model.Nombre_Mascota)
+
+        @Html.HiddenFor(model => model.Microchip)
+
+        @Html.HiddenFor(model => model.FechaNacimiento)
+
+        @Html.HiddenFor(model => model.Peso)
+
+        @Html.HiddenFor(model => model.Sexo)
+
+        @Html.HiddenFor(model => model.Tipo)
+
+        @Html.HiddenFor(model => model.Raza)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

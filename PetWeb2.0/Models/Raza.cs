@@ -17,13 +17,15 @@ namespace PetWeb2._0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Raza()
         {
-            this.Especie = new HashSet<Especie>();
+            this.Mascota = new HashSet<Mascota>();
         }
     
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public Nullable<int> Especie { get; set; }
     
+        public virtual Especie Especie1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Especie> Especie { get; set; }
+        public virtual ICollection<Mascota> Mascota { get; set; }
     }
 }

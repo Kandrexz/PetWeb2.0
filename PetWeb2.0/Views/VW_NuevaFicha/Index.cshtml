@@ -1,0 +1,115 @@
+﻿@model IEnumerable<PetWeb2._0.Models.VW_NuevaFicha>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_ViewStart.cshtml";
+}
+
+<h2>Index</h2>
+
+>
+<table class="table posicionGrilla">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fono_Contacto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Mascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Microchip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Raza)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fono_Contacto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Mascota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Microchip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza)
+            </td>
+            <td>
+                @Html.ActionLink("Ver Mascota", "View", new { Rut = item.Rut })
+            </td>
+        </tr>
+    }
+
+</table>

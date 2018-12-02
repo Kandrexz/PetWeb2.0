@@ -15,6 +15,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Correo)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
         <th></th>
     </tr>
 
@@ -24,9 +30,15 @@
             @Html.DisplayFor(modelItem => item.Correo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Rut }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Rut }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Rut })
         </td>
     </tr>
 }

@@ -18,14 +18,15 @@ namespace PetWeb2._0.Models
         public Especie()
         {
             this.Mascota = new HashSet<Mascota>();
+            this.Raza = new HashSet<Raza>();
         }
     
         public int Id { get; set; }
-        public int Raza { get; set; }
         public string Tipo { get; set; }
     
-        public virtual Raza Raza1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mascota> Mascota { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Raza> Raza { get; set; }
     }
 }

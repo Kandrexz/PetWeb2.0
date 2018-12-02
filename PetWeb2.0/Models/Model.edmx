@@ -66,6 +66,7 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Rut" Type="int" />
+          <Property Name="Sucursal" Type="int" />
         </EntityType>
         <EntityType Name="AtencionVeterinaria">
           <Key>
@@ -84,10 +85,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdCliente" Type="int" />
-          <Property Name="RutCliente" Type="int" />
           <Property Name="Fono" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Rut" Type="int" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ControlDesparacitaciones">
           <Key>
@@ -99,9 +100,9 @@
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="ProximaFecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Vacuna" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Dosis" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ViaAdministracion" Type="varchar" MaxLength="30" />
+          <Property Name="Desparacitador" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ControlVacuna">
           <Key>
@@ -113,25 +114,24 @@
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="ProximaFecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Vacuna" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Dosis" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ViaAdministracion" Type="varchar" MaxLength="30" />
+          <Property Name="Vacuna" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DueñoMascota">
           <Key>
-            <PropertyRef Name="Id" />
             <PropertyRef Name="Rut" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Rut" Type="int" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Especie">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Raza" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="ExamenClinico">
@@ -156,18 +156,20 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Microchip" Type="int" Nullable="false" />
-          <Property Name="IdCliente" Type="int" />
-          <Property Name="RutCliente" Type="int" />
-          <Property Name="Especie" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Peso" Type="float" Nullable="false" />
           <Property Name="Color" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="FechaNacimiento" Type="date" Nullable="false" />
-          <Property Name="Foto" Type="image" Nullable="false" />
-          <Property Name="CausaDefuncion" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="ObservacionDefuncion" Type="nvarchar" MaxLength="200" />
-          <Property Name="FecheDefuncion" Type="date" Nullable="false" />
+          <Property Name="Rut" Type="int" />
+          <Property Name="CausaDefuncion" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaDefuncion" Type="nvarchar" MaxLength="10" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Raza" Type="int" />
+          <Property Name="Especie" Type="int" />
+          <Property Name="Estilizado" Type="varchar" MaxLength="20" />
+          <Property Name="Defuncion" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Raza">
           <Key>
@@ -175,6 +177,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Especie" Type="int" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -182,10 +185,11 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Veterinaria" Type="int" Nullable="false" />
-          <Property Name="Usuario" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Patente" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Fono" Type="smallint" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -202,13 +206,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Sucursal" Type="int" Nullable="false" />
-          <Property Name="IdCliente" Type="int" />
-          <Property Name="RutCliente" Type="int" />
           <Property Name="Region" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Ciudad" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Calle" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Numero" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DueñoMascota" Type="int" />
         </EntityType>
         <EntityType Name="Veterinaria">
           <Key>
@@ -218,9 +220,69 @@
           <Property Name="Rut" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Fono" Type="smallint" Nullable="false" />
+          <Property Name="Fono" Type="int" />
         </EntityType>
-        <Association Name="FK__AtencionV__Sucur__06CD04F7">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PetWeb.dbo.NUEVAFICHA' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="NUEVAFICHA">
+          <Key>
+            <PropertyRef Name="Rut" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Correo" />
+            <PropertyRef Name="Fono" />
+          </Key>
+          <Property Name="Rut" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fono" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_NuevaFicha">
+          <Key>
+            <PropertyRef Name="Rut" />
+            <PropertyRef Name="Fono Contacto" />
+            <PropertyRef Name="Region" />
+            <PropertyRef Name="Ciudad" />
+            <PropertyRef Name="Calle" />
+            <PropertyRef Name="Numero" />
+            <PropertyRef Name="Nombre Mascota" />
+            <PropertyRef Name="Microchip" />
+            <PropertyRef Name="FechaNacimiento" />
+            <PropertyRef Name="Peso" />
+            <PropertyRef Name="Sexo" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Raza" />
+          </Key>
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rut" Type="int" Nullable="false" />
+          <Property Name="Fono Contacto" Type="int" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Calle" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nombre Mascota" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Microchip" Type="int" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="Peso" Type="float" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Raza" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AspNetUse__Sucur__01142BA1">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AtencionV__Sucur__38996AB5">
           <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,7 +294,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionV__Usuar__05D8E0BE">
+        <Association Name="FK__AtencionV__Usuar__398D8EEE">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -244,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionVeterina__07C12930">
+        <Association Name="FK__AtencionVeterina__3A81B327">
           <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,21 +320,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contacto__7B5B524B">
+        <Association Name="FK__Contacto__Rut__5441852A">
           <End Role="DueñoMascota" Type="Self.DueñoMascota" Multiplicity="0..1" />
           <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DueñoMascota">
-              <PropertyRef Name="Id" />
               <PropertyRef Name="Rut" />
             </Principal>
             <Dependent Role="Contacto">
-              <PropertyRef Name="IdCliente" />
-              <PropertyRef Name="RutCliente" />
+              <PropertyRef Name="Rut" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ControlDe__Atenc__114A936A">
+        <Association Name="FK__ControlDe__Atenc__3C69FB99">
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="1" />
           <End Role="ControlDesparacitaciones" Type="Self.ControlDesparacitaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,7 +344,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ControlVa__Atenc__0D7A0286">
+        <Association Name="FK__ControlVa__Atenc__3D5E1FD2">
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="1" />
           <End Role="ControlVacuna" Type="Self.ControlVacuna" Multiplicity="*" />
           <ReferentialConstraint>
@@ -296,19 +356,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Especie__Raza__76969D2E">
-          <End Role="Raza" Type="Self.Raza" Multiplicity="1" />
-          <End Role="Especie" Type="Self.Especie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Raza">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Especie">
-              <PropertyRef Name="Raza" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ExamenCli__Atenc__0A9D95DB">
+        <Association Name="FK__ExamenCli__Atenc__3F466844">
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="1" />
           <End Role="ExamenClinico" Type="Self.ExamenClinico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,22 +368,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Mascota__02084FDA">
-          <End Role="DueñoMascota" Type="Self.DueñoMascota" Multiplicity="0..1" />
-          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DueñoMascota">
-              <PropertyRef Name="Id" />
-              <PropertyRef Name="Rut" />
-            </Principal>
-            <Dependent Role="Mascota">
-              <PropertyRef Name="IdCliente" />
-              <PropertyRef Name="RutCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Mascota__Especie__02FC7413">
-          <End Role="Especie" Type="Self.Especie" Multiplicity="1" />
+        <Association Name="FK__Mascota__Especie__71D1E811">
+          <End Role="Especie" Type="Self.Especie" Multiplicity="0..1" />
           <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especie">
@@ -346,19 +380,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sucursal__Usuari__71D1E811">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+        <Association Name="FK__Mascota__Raza__6FE99F9F">
+          <End Role="Raza" Type="Self.Raza" Multiplicity="0..1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="Raza">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Sucursal">
-              <PropertyRef Name="Usuario" />
+            <Dependent Role="Mascota">
+              <PropertyRef Name="Raza" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sucursal__Veteri__70DDC3D8">
+        <Association Name="FK__Mascota__Rut__5535A963">
+          <End Role="DueñoMascota" Type="Self.DueñoMascota" Multiplicity="0..1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DueñoMascota">
+              <PropertyRef Name="Rut" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="Rut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raza__Especie__6EF57B66">
+          <End Role="Especie" Type="Self.Especie" Multiplicity="0..1" />
+          <End Role="Raza" Type="Self.Raza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Raza">
+              <PropertyRef Name="Especie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Veteri__4316F928">
           <End Role="Veterinaria" Type="Self.Veterinaria" Multiplicity="1" />
           <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
           <ReferentialConstraint>
@@ -370,29 +428,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__7F2BE32F">
+        <Association Name="FK__Ubicacion__Dueño__5CD6CB2B">
           <End Role="DueñoMascota" Type="Self.DueñoMascota" Multiplicity="0..1" />
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DueñoMascota">
-              <PropertyRef Name="Id" />
               <PropertyRef Name="Rut" />
             </Principal>
             <Dependent Role="Ubicacion">
-              <PropertyRef Name="IdCliente" />
-              <PropertyRef Name="RutCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ubicacion__Sucur__7E37BEF6">
-          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
-          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursal">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ubicacion">
-              <PropertyRef Name="Sucursal" />
+              <PropertyRef Name="DueñoMascota" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -472,60 +516,87 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Veterinaria" EntityType="Self.Veterinaria" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AtencionV__Sucur__06CD04F7" Association="Self.FK__AtencionV__Sucur__06CD04F7">
+          <EntitySet Name="NUEVAFICHA" EntityType="Self.NUEVAFICHA" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [NUEVAFICHA].[Rut] AS [Rut], 
+    [NUEVAFICHA].[Nombre] AS [Nombre], 
+    [NUEVAFICHA].[Correo] AS [Correo], 
+    [NUEVAFICHA].[Fono] AS [Fono]
+    FROM [dbo].[NUEVAFICHA] AS [NUEVAFICHA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_NuevaFicha" EntityType="Self.VW_NuevaFicha" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_NuevaFicha].[Nombre] AS [Nombre], 
+    [VW_NuevaFicha].[Apellido] AS [Apellido], 
+    [VW_NuevaFicha].[Rut] AS [Rut], 
+    [VW_NuevaFicha].[Fono Contacto] AS [Fono Contacto], 
+    [VW_NuevaFicha].[Region] AS [Region], 
+    [VW_NuevaFicha].[Ciudad] AS [Ciudad], 
+    [VW_NuevaFicha].[Calle] AS [Calle], 
+    [VW_NuevaFicha].[Numero] AS [Numero], 
+    [VW_NuevaFicha].[Nombre Mascota] AS [Nombre Mascota], 
+    [VW_NuevaFicha].[Microchip] AS [Microchip], 
+    [VW_NuevaFicha].[FechaNacimiento] AS [FechaNacimiento], 
+    [VW_NuevaFicha].[Peso] AS [Peso], 
+    [VW_NuevaFicha].[Sexo] AS [Sexo], 
+    [VW_NuevaFicha].[Tipo] AS [Tipo], 
+    [VW_NuevaFicha].[Raza] AS [Raza]
+    FROM [dbo].[VW_NuevaFicha] AS [VW_NuevaFicha]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__AspNetUse__Sucur__01142BA1" Association="Self.FK__AspNetUse__Sucur__01142BA1">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AtencionV__Sucur__38996AB5" Association="Self.FK__AtencionV__Sucur__38996AB5">
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Usuar__05D8E0BE" Association="Self.FK__AtencionV__Usuar__05D8E0BE">
+          <AssociationSet Name="FK__AtencionV__Usuar__398D8EEE" Association="Self.FK__AtencionV__Usuar__398D8EEE">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionVeterina__07C12930" Association="Self.FK__AtencionVeterina__07C12930">
+          <AssociationSet Name="FK__AtencionVeterina__3A81B327" Association="Self.FK__AtencionVeterina__3A81B327">
             <End Role="Mascota" EntitySet="Mascota" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contacto__7B5B524B" Association="Self.FK__Contacto__7B5B524B">
+          <AssociationSet Name="FK__Contacto__Rut__5441852A" Association="Self.FK__Contacto__Rut__5441852A">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
             <End Role="Contacto" EntitySet="Contacto" />
           </AssociationSet>
-          <AssociationSet Name="FK__ControlDe__Atenc__114A936A" Association="Self.FK__ControlDe__Atenc__114A936A">
+          <AssociationSet Name="FK__ControlDe__Atenc__3C69FB99" Association="Self.FK__ControlDe__Atenc__3C69FB99">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
             <End Role="ControlDesparacitaciones" EntitySet="ControlDesparacitaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__ControlVa__Atenc__0D7A0286" Association="Self.FK__ControlVa__Atenc__0D7A0286">
+          <AssociationSet Name="FK__ControlVa__Atenc__3D5E1FD2" Association="Self.FK__ControlVa__Atenc__3D5E1FD2">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
             <End Role="ControlVacuna" EntitySet="ControlVacuna" />
           </AssociationSet>
-          <AssociationSet Name="FK__Especie__Raza__76969D2E" Association="Self.FK__Especie__Raza__76969D2E">
-            <End Role="Raza" EntitySet="Raza" />
-            <End Role="Especie" EntitySet="Especie" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ExamenCli__Atenc__0A9D95DB" Association="Self.FK__ExamenCli__Atenc__0A9D95DB">
+          <AssociationSet Name="FK__ExamenCli__Atenc__3F466844" Association="Self.FK__ExamenCli__Atenc__3F466844">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
             <End Role="ExamenClinico" EntitySet="ExamenClinico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Mascota__02084FDA" Association="Self.FK__Mascota__02084FDA">
-            <End Role="DueñoMascota" EntitySet="DueñoMascota" />
-            <End Role="Mascota" EntitySet="Mascota" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Mascota__Especie__02FC7413" Association="Self.FK__Mascota__Especie__02FC7413">
+          <AssociationSet Name="FK__Mascota__Especie__71D1E811" Association="Self.FK__Mascota__Especie__71D1E811">
             <End Role="Especie" EntitySet="Especie" />
             <End Role="Mascota" EntitySet="Mascota" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sucursal__Usuari__71D1E811" Association="Self.FK__Sucursal__Usuari__71D1E811">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Sucursal" EntitySet="Sucursal" />
+          <AssociationSet Name="FK__Mascota__Raza__6FE99F9F" Association="Self.FK__Mascota__Raza__6FE99F9F">
+            <End Role="Raza" EntitySet="Raza" />
+            <End Role="Mascota" EntitySet="Mascota" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sucursal__Veteri__70DDC3D8" Association="Self.FK__Sucursal__Veteri__70DDC3D8">
+          <AssociationSet Name="FK__Mascota__Rut__5535A963" Association="Self.FK__Mascota__Rut__5535A963">
+            <End Role="DueñoMascota" EntitySet="DueñoMascota" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raza__Especie__6EF57B66" Association="Self.FK__Raza__Especie__6EF57B66">
+            <End Role="Especie" EntitySet="Especie" />
+            <End Role="Raza" EntitySet="Raza" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Veteri__4316F928" Association="Self.FK__Sucursal__Veteri__4316F928">
             <End Role="Veterinaria" EntitySet="Veterinaria" />
             <End Role="Sucursal" EntitySet="Sucursal" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__7F2BE32F" Association="Self.FK__Ubicacion__7F2BE32F">
+          <AssociationSet Name="FK__Ubicacion__Dueño__5CD6CB2B" Association="Self.FK__Ubicacion__Dueño__5CD6CB2B">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
-            <End Role="Ubicacion" EntitySet="Ubicacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__Sucur__7E37BEF6" Association="Self.FK__Ubicacion__Sucur__7E37BEF6">
-            <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Ubicacion" EntitySet="Ubicacion" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -568,6 +639,8 @@
           <EntitySet Name="sysdiagrams" EntityType="PetWebModel.sysdiagrams" />
           <EntitySet Name="Ubicacion" EntityType="PetWebModel.Ubicacion" />
           <EntitySet Name="Veterinaria" EntityType="PetWebModel.Veterinaria" />
+          <EntitySet Name="NUEVAFICHA" EntityType="PetWebModel.NUEVAFICHA" />
+          <EntitySet Name="VW_NuevaFicha" EntityType="PetWebModel.VW_NuevaFicha" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="PetWebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -576,61 +649,61 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Usuar__05D8E0BE" Association="PetWebModel.FK__AtencionV__Usuar__05D8E0BE">
+          <AssociationSet Name="FK__AspNetUse__Sucur__01142BA1" Association="PetWebModel.FK__AspNetUse__Sucur__01142BA1">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AtencionV__Usuar__398D8EEE" Association="PetWebModel.FK__AtencionV__Usuar__398D8EEE">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sucursal__Usuari__71D1E811" Association="PetWebModel.FK__Sucursal__Usuari__71D1E811">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Sucursal" EntitySet="Sucursal" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Sucur__06CD04F7" Association="PetWebModel.FK__AtencionV__Sucur__06CD04F7">
+          <AssociationSet Name="FK__AtencionV__Sucur__38996AB5" Association="PetWebModel.FK__AtencionV__Sucur__38996AB5">
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionVeterina__07C12930" Association="PetWebModel.FK__AtencionVeterina__07C12930">
+          <AssociationSet Name="FK__AtencionVeterina__3A81B327" Association="PetWebModel.FK__AtencionVeterina__3A81B327">
             <End Role="Mascota" EntitySet="Mascota" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__ControlDe__Atenc__114A936A" Association="PetWebModel.FK__ControlDe__Atenc__114A936A">
+          <AssociationSet Name="FK__ControlDe__Atenc__3C69FB99" Association="PetWebModel.FK__ControlDe__Atenc__3C69FB99">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
             <End Role="ControlDesparacitaciones" EntitySet="ControlDesparacitaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__ControlVa__Atenc__0D7A0286" Association="PetWebModel.FK__ControlVa__Atenc__0D7A0286">
+          <AssociationSet Name="FK__ControlVa__Atenc__3D5E1FD2" Association="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
             <End Role="ControlVacuna" EntitySet="ControlVacuna" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExamenCli__Atenc__0A9D95DB" Association="PetWebModel.FK__ExamenCli__Atenc__0A9D95DB">
+          <AssociationSet Name="FK__ExamenCli__Atenc__3F466844" Association="PetWebModel.FK__ExamenCli__Atenc__3F466844">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
             <End Role="ExamenClinico" EntitySet="ExamenClinico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contacto__7B5B524B" Association="PetWebModel.FK__Contacto__7B5B524B">
+          <AssociationSet Name="FK__Contacto__Rut__5441852A" Association="PetWebModel.FK__Contacto__Rut__5441852A">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
             <End Role="Contacto" EntitySet="Contacto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Mascota__02084FDA" Association="PetWebModel.FK__Mascota__02084FDA">
+          <AssociationSet Name="FK__Mascota__Rut__5535A963" Association="PetWebModel.FK__Mascota__Rut__5535A963">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
             <End Role="Mascota" EntitySet="Mascota" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__7F2BE32F" Association="PetWebModel.FK__Ubicacion__7F2BE32F">
+          <AssociationSet Name="FK__Ubicacion__Dueño__5CD6CB2B" Association="PetWebModel.FK__Ubicacion__Dueño__5CD6CB2B">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
             <End Role="Ubicacion" EntitySet="Ubicacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Especie__Raza__76969D2E" Association="PetWebModel.FK__Especie__Raza__76969D2E">
-            <End Role="Raza" EntitySet="Raza" />
-            <End Role="Especie" EntitySet="Especie" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Mascota__Especie__02FC7413" Association="PetWebModel.FK__Mascota__Especie__02FC7413">
+          <AssociationSet Name="FK__Mascota__Especie__71D1E811" Association="PetWebModel.FK__Mascota__Especie__71D1E811">
             <End Role="Especie" EntitySet="Especie" />
             <End Role="Mascota" EntitySet="Mascota" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sucursal__Veteri__70DDC3D8" Association="PetWebModel.FK__Sucursal__Veteri__70DDC3D8">
+          <AssociationSet Name="FK__Raza__Especie__6EF57B66" Association="PetWebModel.FK__Raza__Especie__6EF57B66">
+            <End Role="Especie" EntitySet="Especie" />
+            <End Role="Raza" EntitySet="Raza" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__Raza__6FE99F9F" Association="PetWebModel.FK__Mascota__Raza__6FE99F9F">
+            <End Role="Raza" EntitySet="Raza" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Veteri__4316F928" Association="PetWebModel.FK__Sucursal__Veteri__4316F928">
             <End Role="Veterinaria" EntitySet="Veterinaria" />
             <End Role="Sucursal" EntitySet="Sucursal" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__Sucur__7E37BEF6" Association="PetWebModel.FK__Ubicacion__Sucur__7E37BEF6">
-            <End Role="Sucursal" EntitySet="Sucursal" />
-            <End Role="Ubicacion" EntitySet="Ubicacion" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="PetWebModel.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -693,10 +766,11 @@
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Rut" Type="Int32" />
+          <Property Name="Sucursal" Type="Int32" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="PetWebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="PetWebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Usuar__05D8E0BE" FromRole="AspNetUsers" ToRole="AtencionVeterinaria" />
-          <NavigationProperty Name="Sucursal" Relationship="PetWebModel.FK__Sucursal__Usuari__71D1E811" FromRole="AspNetUsers" ToRole="Sucursal" />
+          <NavigationProperty Name="Sucursal1" Relationship="PetWebModel.FK__AspNetUse__Sucur__01142BA1" FromRole="AspNetUsers" ToRole="Sucursal" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Usuar__398D8EEE" FromRole="AspNetUsers" ToRole="AtencionVeterinaria" />
           <NavigationProperty Name="AspNetRoles" Relationship="PetWebModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="AtencionVeterinaria">
@@ -710,23 +784,23 @@
           <Property Name="Microchip" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__AtencionV__Usuar__05D8E0BE" FromRole="AtencionVeterinaria" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Sucursal1" Relationship="PetWebModel.FK__AtencionV__Sucur__06CD04F7" FromRole="AtencionVeterinaria" ToRole="Sucursal" />
-          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__AtencionVeterina__07C12930" FromRole="AtencionVeterinaria" ToRole="Mascota" />
-          <NavigationProperty Name="ControlDesparacitaciones" Relationship="PetWebModel.FK__ControlDe__Atenc__114A936A" FromRole="AtencionVeterinaria" ToRole="ControlDesparacitaciones" />
-          <NavigationProperty Name="ControlVacuna" Relationship="PetWebModel.FK__ControlVa__Atenc__0D7A0286" FromRole="AtencionVeterinaria" ToRole="ControlVacuna" />
-          <NavigationProperty Name="ExamenClinico" Relationship="PetWebModel.FK__ExamenCli__Atenc__0A9D95DB" FromRole="AtencionVeterinaria" ToRole="ExamenClinico" />
+          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__AtencionV__Usuar__398D8EEE" FromRole="AtencionVeterinaria" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Sucursal1" Relationship="PetWebModel.FK__AtencionV__Sucur__38996AB5" FromRole="AtencionVeterinaria" ToRole="Sucursal" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__AtencionVeterina__3A81B327" FromRole="AtencionVeterinaria" ToRole="Mascota" />
+          <NavigationProperty Name="ControlDesparacitaciones" Relationship="PetWebModel.FK__ControlDe__Atenc__3C69FB99" FromRole="AtencionVeterinaria" ToRole="ControlDesparacitaciones" />
+          <NavigationProperty Name="ControlVacuna" Relationship="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2" FromRole="AtencionVeterinaria" ToRole="ControlVacuna" />
+          <NavigationProperty Name="ExamenClinico" Relationship="PetWebModel.FK__ExamenCli__Atenc__3F466844" FromRole="AtencionVeterinaria" ToRole="ExamenClinico" />
         </EntityType>
         <EntityType Name="Contacto">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCliente" Type="Int32" />
-          <Property Name="RutCliente" Type="Int32" />
           <Property Name="Fono" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DueñoMascota" Relationship="PetWebModel.FK__Contacto__7B5B524B" FromRole="Contacto" ToRole="DueñoMascota" />
+          <Property Name="Rut" Type="Int32" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DueñoMascota" Relationship="PetWebModel.FK__Contacto__Rut__5441852A" FromRole="Contacto" ToRole="DueñoMascota" />
         </EntityType>
         <EntityType Name="ControlDesparacitaciones">
           <Key>
@@ -738,10 +812,10 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ProximaFecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Vacuna" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Dosis" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ViaAdministracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ControlDe__Atenc__114A936A" FromRole="ControlDesparacitaciones" ToRole="AtencionVeterinaria" />
+          <Property Name="Desparacitador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ControlDe__Atenc__3C69FB99" FromRole="ControlDesparacitaciones" ToRole="AtencionVeterinaria" />
         </EntityType>
         <EntityType Name="ControlVacuna">
           <Key>
@@ -753,32 +827,31 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ProximaFecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Vacuna" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Dosis" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ViaAdministracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ControlVa__Atenc__0D7A0286" FromRole="ControlVacuna" ToRole="AtencionVeterinaria" />
+          <Property Name="Vacuna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2" FromRole="ControlVacuna" ToRole="AtencionVeterinaria" />
         </EntityType>
         <EntityType Name="DueñoMascota">
           <Key>
-            <PropertyRef Name="Id" />
             <PropertyRef Name="Rut" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rut" Type="Int32" Nullable="false" />
           <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Contacto" Relationship="PetWebModel.FK__Contacto__7B5B524B" FromRole="DueñoMascota" ToRole="Contacto" />
-          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__02084FDA" FromRole="DueñoMascota" ToRole="Mascota" />
-          <NavigationProperty Name="Ubicacion" Relationship="PetWebModel.FK__Ubicacion__7F2BE32F" FromRole="DueñoMascota" ToRole="Ubicacion" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contacto" Relationship="PetWebModel.FK__Contacto__Rut__5441852A" FromRole="DueñoMascota" ToRole="Contacto" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__Rut__5535A963" FromRole="DueñoMascota" ToRole="Mascota" />
+          <NavigationProperty Name="Ubicacion" Relationship="PetWebModel.FK__Ubicacion__Dueño__5CD6CB2B" FromRole="DueñoMascota" ToRole="Ubicacion" />
         </EntityType>
         <EntityType Name="Especie">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Raza" Type="Int32" Nullable="false" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Raza1" Relationship="PetWebModel.FK__Especie__Raza__76969D2E" FromRole="Especie" ToRole="Raza" />
-          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__Especie__02FC7413" FromRole="Especie" ToRole="Mascota" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__Especie__71D1E811" FromRole="Especie" ToRole="Mascota" />
+          <NavigationProperty Name="Raza" Relationship="PetWebModel.FK__Raza__Especie__6EF57B66" FromRole="Especie" ToRole="Raza" />
         </EntityType>
         <EntityType Name="ExamenClinico">
           <Key>
@@ -794,7 +867,7 @@
           <Property Name="Diagnostico" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Tratamiento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ExamenCli__Atenc__0A9D95DB" FromRole="ExamenClinico" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ExamenCli__Atenc__3F466844" FromRole="ExamenClinico" ToRole="AtencionVeterinaria" />
         </EntityType>
         <EntityType Name="Mascota">
           <Key>
@@ -803,21 +876,24 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Microchip" Type="Int32" Nullable="false" />
-          <Property Name="IdCliente" Type="Int32" />
-          <Property Name="RutCliente" Type="Int32" />
-          <Property Name="Especie" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Sexo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Peso" Type="Double" Nullable="false" />
           <Property Name="Color" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Foto" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="CausaDefuncion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="ObservacionDefuncion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FecheDefuncion" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionVeterina__07C12930" FromRole="Mascota" ToRole="AtencionVeterinaria" />
-          <NavigationProperty Name="DueñoMascota" Relationship="PetWebModel.FK__Mascota__02084FDA" FromRole="Mascota" ToRole="DueñoMascota" />
-          <NavigationProperty Name="Especie1" Relationship="PetWebModel.FK__Mascota__Especie__02FC7413" FromRole="Mascota" ToRole="Especie" />
+          <Property Name="Rut" Type="Int32" />
+          <Property Name="CausaDefuncion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaDefuncion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Raza" Type="Int32" />
+          <Property Name="Especie" Type="Int32" />
+          <Property Name="Estilizado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Defuncion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionVeterina__3A81B327" FromRole="Mascota" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="DueñoMascota" Relationship="PetWebModel.FK__Mascota__Rut__5535A963" FromRole="Mascota" ToRole="DueñoMascota" />
+          <NavigationProperty Name="Especie1" Relationship="PetWebModel.FK__Mascota__Especie__71D1E811" FromRole="Mascota" ToRole="Especie" />
+          <NavigationProperty Name="Raza1" Relationship="PetWebModel.FK__Mascota__Raza__6FE99F9F" FromRole="Mascota" ToRole="Raza" />
         </EntityType>
         <EntityType Name="Raza">
           <Key>
@@ -825,7 +901,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Especie" Relationship="PetWebModel.FK__Especie__Raza__76969D2E" FromRole="Raza" ToRole="Especie" />
+          <Property Name="Especie" Type="Int32" />
+          <NavigationProperty Name="Especie1" Relationship="PetWebModel.FK__Raza__Especie__6EF57B66" FromRole="Raza" ToRole="Especie" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__Raza__6FE99F9F" FromRole="Raza" ToRole="Mascota" />
         </EntityType>
         <EntityType Name="Sucursal">
           <Key>
@@ -833,14 +911,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Veterinaria" Type="Int32" Nullable="false" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Patente" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Fono" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__Sucursal__Usuari__71D1E811" FromRole="Sucursal" ToRole="AspNetUsers" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Sucur__06CD04F7" FromRole="Sucursal" ToRole="AtencionVeterinaria" />
-          <NavigationProperty Name="Veterinaria1" Relationship="PetWebModel.FK__Sucursal__Veteri__70DDC3D8" FromRole="Sucursal" ToRole="Veterinaria" />
-          <NavigationProperty Name="Ubicacion" Relationship="PetWebModel.FK__Ubicacion__Sucur__7E37BEF6" FromRole="Sucursal" ToRole="Ubicacion" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__AspNetUse__Sucur__01142BA1" FromRole="Sucursal" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Sucur__38996AB5" FromRole="Sucursal" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="Veterinaria1" Relationship="PetWebModel.FK__Sucursal__Veteri__4316F928" FromRole="Sucursal" ToRole="Veterinaria" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -857,15 +935,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sucursal" Type="Int32" Nullable="false" />
-          <Property Name="IdCliente" Type="Int32" />
-          <Property Name="RutCliente" Type="Int32" />
           <Property Name="Region" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Calle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Numero" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DueñoMascota" Relationship="PetWebModel.FK__Ubicacion__7F2BE32F" FromRole="Ubicacion" ToRole="DueñoMascota" />
-          <NavigationProperty Name="Sucursal1" Relationship="PetWebModel.FK__Ubicacion__Sucur__7E37BEF6" FromRole="Ubicacion" ToRole="Sucursal" />
+          <Property Name="DueñoMascota" Type="Int32" />
+          <NavigationProperty Name="DueñoMascota1" Relationship="PetWebModel.FK__Ubicacion__Dueño__5CD6CB2B" FromRole="Ubicacion" ToRole="DueñoMascota" />
         </EntityType>
         <EntityType Name="Veterinaria">
           <Key>
@@ -875,8 +950,52 @@
           <Property Name="Rut" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Fono" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="Sucursal" Relationship="PetWebModel.FK__Sucursal__Veteri__70DDC3D8" FromRole="Veterinaria" ToRole="Sucursal" />
+          <Property Name="Fono" Type="Int32" />
+          <NavigationProperty Name="Sucursal" Relationship="PetWebModel.FK__Sucursal__Veteri__4316F928" FromRole="Veterinaria" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="NUEVAFICHA">
+          <Key>
+            <PropertyRef Name="Rut" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Correo" />
+            <PropertyRef Name="Fono" />
+          </Key>
+          <Property Name="Rut" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fono" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VW_NuevaFicha">
+          <Key>
+            <PropertyRef Name="Rut" />
+            <PropertyRef Name="Fono_Contacto" />
+            <PropertyRef Name="Region" />
+            <PropertyRef Name="Ciudad" />
+            <PropertyRef Name="Calle" />
+            <PropertyRef Name="Numero" />
+            <PropertyRef Name="Nombre_Mascota" />
+            <PropertyRef Name="Microchip" />
+            <PropertyRef Name="FechaNacimiento" />
+            <PropertyRef Name="Peso" />
+            <PropertyRef Name="Sexo" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Raza" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rut" Type="Int32" Nullable="false" />
+          <Property Name="Fono_Contacto" Type="Int32" Nullable="false" />
+          <Property Name="Region" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_Mascota" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Microchip" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Peso" Type="Double" Nullable="false" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Raza" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -906,7 +1025,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionV__Usuar__05D8E0BE">
+        <Association Name="FK__AspNetUse__Sucur__01142BA1">
+          <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="0..1" />
+          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AtencionV__Usuar__398D8EEE">
           <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -918,19 +1049,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sucursal__Usuari__71D1E811">
-          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
-          <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sucursal">
-              <PropertyRef Name="Usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AtencionV__Sucur__06CD04F7">
+        <Association Name="FK__AtencionV__Sucur__38996AB5">
           <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="1" />
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -942,7 +1061,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionVeterina__07C12930">
+        <Association Name="FK__AtencionVeterina__3A81B327">
           <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="0..1" />
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -956,7 +1075,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ControlDe__Atenc__114A936A">
+        <Association Name="FK__ControlDe__Atenc__3C69FB99">
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="1" />
           <End Type="PetWebModel.ControlDesparacitaciones" Role="ControlDesparacitaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -968,7 +1087,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ControlVa__Atenc__0D7A0286">
+        <Association Name="FK__ControlVa__Atenc__3D5E1FD2">
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="1" />
           <End Type="PetWebModel.ControlVacuna" Role="ControlVacuna" Multiplicity="*" />
           <ReferentialConstraint>
@@ -980,7 +1099,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExamenCli__Atenc__0A9D95DB">
+        <Association Name="FK__ExamenCli__Atenc__3F466844">
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="1" />
           <End Type="PetWebModel.ExamenClinico" Role="ExamenClinico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -992,62 +1111,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contacto__7B5B524B">
+        <Association Name="FK__Contacto__Rut__5441852A">
           <End Type="PetWebModel.DueñoMascota" Role="DueñoMascota" Multiplicity="0..1" />
           <End Type="PetWebModel.Contacto" Role="Contacto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DueñoMascota">
-              <PropertyRef Name="Id" />
               <PropertyRef Name="Rut" />
             </Principal>
             <Dependent Role="Contacto">
-              <PropertyRef Name="IdCliente" />
-              <PropertyRef Name="RutCliente" />
+              <PropertyRef Name="Rut" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Mascota__02084FDA">
+        <Association Name="FK__Mascota__Rut__5535A963">
           <End Type="PetWebModel.DueñoMascota" Role="DueñoMascota" Multiplicity="0..1" />
           <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DueñoMascota">
-              <PropertyRef Name="Id" />
               <PropertyRef Name="Rut" />
             </Principal>
             <Dependent Role="Mascota">
-              <PropertyRef Name="IdCliente" />
-              <PropertyRef Name="RutCliente" />
+              <PropertyRef Name="Rut" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__7F2BE32F">
+        <Association Name="FK__Ubicacion__Dueño__5CD6CB2B">
           <End Type="PetWebModel.DueñoMascota" Role="DueñoMascota" Multiplicity="0..1" />
           <End Type="PetWebModel.Ubicacion" Role="Ubicacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DueñoMascota">
-              <PropertyRef Name="Id" />
               <PropertyRef Name="Rut" />
             </Principal>
             <Dependent Role="Ubicacion">
-              <PropertyRef Name="IdCliente" />
-              <PropertyRef Name="RutCliente" />
+              <PropertyRef Name="DueñoMascota" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Especie__Raza__76969D2E">
-          <End Type="PetWebModel.Raza" Role="Raza" Multiplicity="1" />
-          <End Type="PetWebModel.Especie" Role="Especie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Raza">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Especie">
-              <PropertyRef Name="Raza" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Mascota__Especie__02FC7413">
-          <End Type="PetWebModel.Especie" Role="Especie" Multiplicity="1" />
+        <Association Name="FK__Mascota__Especie__71D1E811">
+          <End Type="PetWebModel.Especie" Role="Especie" Multiplicity="0..1" />
           <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Especie">
@@ -1058,7 +1159,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sucursal__Veteri__70DDC3D8">
+        <Association Name="FK__Raza__Especie__6EF57B66">
+          <End Type="PetWebModel.Especie" Role="Especie" Multiplicity="0..1" />
+          <End Type="PetWebModel.Raza" Role="Raza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Raza">
+              <PropertyRef Name="Especie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__Raza__6FE99F9F">
+          <End Type="PetWebModel.Raza" Role="Raza" Multiplicity="0..1" />
+          <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raza">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="Raza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Veteri__4316F928">
           <End Type="PetWebModel.Veterinaria" Role="Veterinaria" Multiplicity="1" />
           <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1067,18 +1192,6 @@
             </Principal>
             <Dependent Role="Sucursal">
               <PropertyRef Name="Veterinaria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ubicacion__Sucur__7E37BEF6">
-          <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="1" />
-          <End Type="PetWebModel.Ubicacion" Role="Ubicacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursal">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ubicacion">
-              <PropertyRef Name="Sucursal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1132,6 +1245,7 @@
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="PetWebModel.AspNetUsers">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
                 <ScalarProperty Name="Rut" ColumnName="Rut" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
@@ -1164,10 +1278,10 @@
           <EntitySetMapping Name="Contacto">
             <EntityTypeMapping TypeName="PetWebModel.Contacto">
               <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Fono" ColumnName="Fono" />
-                <ScalarProperty Name="RutCliente" ColumnName="RutCliente" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1175,9 +1289,9 @@
           <EntitySetMapping Name="ControlDesparacitaciones">
             <EntityTypeMapping TypeName="PetWebModel.ControlDesparacitaciones">
               <MappingFragment StoreEntitySet="ControlDesparacitaciones">
+                <ScalarProperty Name="Desparacitador" ColumnName="Desparacitador" />
                 <ScalarProperty Name="ViaAdministracion" ColumnName="ViaAdministracion" />
                 <ScalarProperty Name="Dosis" ColumnName="Dosis" />
-                <ScalarProperty Name="Vacuna" ColumnName="Vacuna" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="ProximaFecha" ColumnName="ProximaFecha" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -1190,9 +1304,9 @@
           <EntitySetMapping Name="ControlVacuna">
             <EntityTypeMapping TypeName="PetWebModel.ControlVacuna">
               <MappingFragment StoreEntitySet="ControlVacuna">
+                <ScalarProperty Name="Vacuna" ColumnName="Vacuna" />
                 <ScalarProperty Name="ViaAdministracion" ColumnName="ViaAdministracion" />
                 <ScalarProperty Name="Dosis" ColumnName="Dosis" />
-                <ScalarProperty Name="Vacuna" ColumnName="Vacuna" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="ProximaFecha" ColumnName="ProximaFecha" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -1205,9 +1319,10 @@
           <EntitySetMapping Name="DueñoMascota">
             <EntityTypeMapping TypeName="PetWebModel.DueñoMascota">
               <MappingFragment StoreEntitySet="DueñoMascota">
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Rut" ColumnName="Rut" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1215,7 +1330,6 @@
             <EntityTypeMapping TypeName="PetWebModel.Especie">
               <MappingFragment StoreEntitySet="Especie">
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Raza" ColumnName="Raza" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1239,18 +1353,20 @@
           <EntitySetMapping Name="Mascota">
             <EntityTypeMapping TypeName="PetWebModel.Mascota">
               <MappingFragment StoreEntitySet="Mascota">
-                <ScalarProperty Name="FecheDefuncion" ColumnName="FecheDefuncion" />
-                <ScalarProperty Name="ObservacionDefuncion" ColumnName="ObservacionDefuncion" />
-                <ScalarProperty Name="CausaDefuncion" ColumnName="CausaDefuncion" />
+                <ScalarProperty Name="Defuncion" ColumnName="Defuncion" />
+                <ScalarProperty Name="Estilizado" ColumnName="Estilizado" />
+                <ScalarProperty Name="Especie" ColumnName="Especie" />
+                <ScalarProperty Name="Raza" ColumnName="Raza" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="FechaDefuncion" ColumnName="FechaDefuncion" />
+                <ScalarProperty Name="CausaDefuncion" ColumnName="CausaDefuncion" />
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+                <ScalarProperty Name="ObservacionDefuncion" ColumnName="ObservacionDefuncion" />
                 <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
                 <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="Peso" ColumnName="Peso" />
                 <ScalarProperty Name="Sexo" ColumnName="Sexo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Especie" ColumnName="Especie" />
-                <ScalarProperty Name="RutCliente" ColumnName="RutCliente" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Microchip" ColumnName="Microchip" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1259,6 +1375,7 @@
           <EntitySetMapping Name="Raza">
             <EntityTypeMapping TypeName="PetWebModel.Raza">
               <MappingFragment StoreEntitySet="Raza">
+                <ScalarProperty Name="Especie" ColumnName="Especie" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1267,10 +1384,11 @@
           <EntitySetMapping Name="Sucursal">
             <EntityTypeMapping TypeName="PetWebModel.Sucursal">
               <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Fono" ColumnName="Fono" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Patente" ColumnName="Patente" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Veterinaria" ColumnName="Veterinaria" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1290,13 +1408,11 @@
           <EntitySetMapping Name="Ubicacion">
             <EntityTypeMapping TypeName="PetWebModel.Ubicacion">
               <MappingFragment StoreEntitySet="Ubicacion">
+                <ScalarProperty Name="DueñoMascota" ColumnName="DueñoMascota" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
                 <ScalarProperty Name="Calle" ColumnName="Calle" />
                 <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
-                <ScalarProperty Name="RutCliente" ColumnName="RutCliente" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1309,6 +1425,37 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Rut" ColumnName="Rut" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NUEVAFICHA">
+            <EntityTypeMapping TypeName="PetWebModel.NUEVAFICHA">
+              <MappingFragment StoreEntitySet="NUEVAFICHA">
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_NuevaFicha">
+            <EntityTypeMapping TypeName="PetWebModel.VW_NuevaFicha">
+              <MappingFragment StoreEntitySet="VW_NuevaFicha">
+                <ScalarProperty Name="Raza" ColumnName="Raza" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Microchip" ColumnName="Microchip" />
+                <ScalarProperty Name="Nombre_Mascota" ColumnName="Nombre Mascota" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Fono_Contacto" ColumnName="Fono Contacto" />
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

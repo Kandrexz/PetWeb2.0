@@ -46,7 +46,7 @@ namespace PetWeb2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Rut,Correo")] DueñoMascota dueñoMascota)
+        public ActionResult Create([Bind(Include = "Rut,Correo,Nombre,Apellido")] DueñoMascota dueñoMascota)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace PetWeb2._0.Controllers
                 return RedirectToAction("Index");
             }
 
-            return PartialView(dueñoMascota);
+            return View(dueñoMascota);
         }
 
         // GET: DueñoMascota/Edit/5
@@ -78,7 +78,7 @@ namespace PetWeb2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Rut,Correo")] DueñoMascota dueñoMascota)
+        public ActionResult Edit([Bind(Include = "Rut,Correo,Nombre,Apellido")] DueñoMascota dueñoMascota)
         {
             if (ModelState.IsValid)
             {

@@ -15,10 +15,10 @@ namespace PetWeb2._0.Models
     public partial class Contacto
     {
         public int Id { get; set; }
-        public Nullable<int> IdCliente { get; set; }
-        public Nullable<int> RutCliente { get; set; }
         public int Fono { get; set; }
         public string Nombre { get; set; }
+        public Nullable<int> Rut { get; set; }
+        public string Apellido { get; set; }
     
         public virtual DueñoMascota DueñoMascota { get; set; }
     }

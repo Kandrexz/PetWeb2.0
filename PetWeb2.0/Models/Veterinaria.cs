@@ -24,7 +24,7 @@ namespace PetWeb2._0.Models
         public int Rut { get; set; }
         public string Nombre { get; set; }
         public string Correo { get; set; }
-        public short Fono { get; set; }
+        public Nullable<int> Fono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sucursal> Sucursal { get; set; }

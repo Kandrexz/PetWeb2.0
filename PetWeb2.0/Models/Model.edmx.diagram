@@ -5,40 +5,42 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6407bb5b1cc646cc8fe19d57ea7e5379" Name="Diagram1" ZoomLevel="60">
-        <EntityTypeShape EntityType="PetWebModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="2.375" />
-        <EntityTypeShape EntityType="PetWebModel.AspNetRoles" Width="1.5" PointX="3.75" PointY="4.375" />
-        <EntityTypeShape EntityType="PetWebModel.AspNetUserClaims" Width="1.5" PointX="8.25" PointY="5.75" />
-        <EntityTypeShape EntityType="PetWebModel.AspNetUserLogins" Width="1.5" PointX="8.25" PointY="14.5" />
+        <EntityTypeShape EntityType="PetWebModel.C__MigrationHistory" Width="1.5" PointX="8.75" PointY="0.875" />
+        <EntityTypeShape EntityType="PetWebModel.AspNetRoles" Width="1.5" PointX="3.75" PointY="19.5" />
+        <EntityTypeShape EntityType="PetWebModel.AspNetUserClaims" Width="1.5" PointX="8.25" PointY="13.125" />
+        <EntityTypeShape EntityType="PetWebModel.AspNetUserLogins" Width="1.5" PointX="8.25" PointY="5.625" />
         <EntityTypeShape EntityType="PetWebModel.AspNetUsers" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="PetWebModel.AtencionVeterinaria" Width="1.5" PointX="8.25" PointY="10.125" />
-        <EntityTypeShape EntityType="PetWebModel.Contacto" Width="1.5" PointX="3" PointY="19.5" />
-        <EntityTypeShape EntityType="PetWebModel.ControlDesparacitaciones" Width="1.5" PointX="10.5" PointY="14.125" />
-        <EntityTypeShape EntityType="PetWebModel.ControlVacuna" Width="1.5" PointX="10.5" PointY="10.5" />
-        <EntityTypeShape EntityType="PetWebModel.DueñoMascota" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="PetWebModel.Especie" Width="1.5" PointX="3.75" PointY="6.875" />
-        <EntityTypeShape EntityType="PetWebModel.ExamenClinico" Width="1.5" PointX="10.5" PointY="6.625" />
-        <EntityTypeShape EntityType="PetWebModel.Mascota" Width="1.5" PointX="6" PointY="9.75" />
-        <EntityTypeShape EntityType="PetWebModel.Raza" Width="1.5" PointX="1.5" PointY="7" />
-        <EntityTypeShape EntityType="PetWebModel.Sucursal" Width="1.5" PointX="6" PointY="15" />
-        <EntityTypeShape EntityType="PetWebModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="2.375" />
-        <EntityTypeShape EntityType="PetWebModel.Ubicacion" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="PetWebModel.Veterinaria" Width="1.5" PointX="3.75" PointY="15.375" />
+        <EntityTypeShape EntityType="PetWebModel.AtencionVeterinaria" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="PetWebModel.Contacto" Width="1.5" PointX="3" PointY="16.125" />
+        <EntityTypeShape EntityType="PetWebModel.ControlDesparacitaciones" Width="1.5" PointX="10.5" PointY="4.875" />
+        <EntityTypeShape EntityType="PetWebModel.ControlVacuna" Width="1.5" PointX="10.5" PointY="12.375" />
+        <EntityTypeShape EntityType="PetWebModel.DueñoMascota" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="PetWebModel.Especie" Width="1.5" PointX="3.75" PointY="13.5" />
+        <EntityTypeShape EntityType="PetWebModel.ExamenClinico" Width="1.5" PointX="10.5" PointY="8.5" />
+        <EntityTypeShape EntityType="PetWebModel.Mascota" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="PetWebModel.Raza" Width="1.5" PointX="3.75" PointY="10.875" />
+        <EntityTypeShape EntityType="PetWebModel.Sucursal" Width="1.5" PointX="3.75" PointY="2.75" />
+        <EntityTypeShape EntityType="PetWebModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="0.875" />
+        <EntityTypeShape EntityType="PetWebModel.Ubicacion" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="PetWebModel.Veterinaria" Width="1.5" PointX="1.5" PointY="3.125" />
+        <EntityTypeShape EntityType="PetWebModel.NUEVAFICHA" Width="1.5" PointX="12.75" PointY="0.875" />
+        <EntityTypeShape EntityType="PetWebModel.VW_NuevaFicha" Width="1.5" PointX="12.75" PointY="3.875" />
         <AssociationConnector Association="PetWebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="PetWebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
-        <AssociationConnector Association="PetWebModel.FK__AtencionV__Usuar__05D8E0BE" />
-        <AssociationConnector Association="PetWebModel.FK__Sucursal__Usuari__71D1E811" />
-        <AssociationConnector Association="PetWebModel.FK__AtencionV__Sucur__06CD04F7" />
-        <AssociationConnector Association="PetWebModel.FK__AtencionVeterina__07C12930" />
-        <AssociationConnector Association="PetWebModel.FK__ControlDe__Atenc__114A936A" />
-        <AssociationConnector Association="PetWebModel.FK__ControlVa__Atenc__0D7A0286" />
-        <AssociationConnector Association="PetWebModel.FK__ExamenCli__Atenc__0A9D95DB" />
-        <AssociationConnector Association="PetWebModel.FK__Contacto__7B5B524B" />
-        <AssociationConnector Association="PetWebModel.FK__Mascota__02084FDA" />
-        <AssociationConnector Association="PetWebModel.FK__Ubicacion__7F2BE32F" />
-        <AssociationConnector Association="PetWebModel.FK__Especie__Raza__76969D2E" />
-        <AssociationConnector Association="PetWebModel.FK__Mascota__Especie__02FC7413" />
-        <AssociationConnector Association="PetWebModel.FK__Sucursal__Veteri__70DDC3D8" />
-        <AssociationConnector Association="PetWebModel.FK__Ubicacion__Sucur__7E37BEF6" />
+        <AssociationConnector Association="PetWebModel.FK__AspNetUse__Sucur__01142BA1" />
+        <AssociationConnector Association="PetWebModel.FK__AtencionV__Usuar__398D8EEE" />
+        <AssociationConnector Association="PetWebModel.FK__AtencionV__Sucur__38996AB5" />
+        <AssociationConnector Association="PetWebModel.FK__AtencionVeterina__3A81B327" />
+        <AssociationConnector Association="PetWebModel.FK__ControlDe__Atenc__3C69FB99" />
+        <AssociationConnector Association="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2" />
+        <AssociationConnector Association="PetWebModel.FK__ExamenCli__Atenc__3F466844" />
+        <AssociationConnector Association="PetWebModel.FK__Contacto__Rut__5441852A" />
+        <AssociationConnector Association="PetWebModel.FK__Mascota__Rut__5535A963" />
+        <AssociationConnector Association="PetWebModel.FK__Ubicacion__Dueño__5CD6CB2B" />
+        <AssociationConnector Association="PetWebModel.FK__Mascota__Especie__71D1E811" />
+        <AssociationConnector Association="PetWebModel.FK__Raza__Especie__6EF57B66" />
+        <AssociationConnector Association="PetWebModel.FK__Mascota__Raza__6FE99F9F" />
+        <AssociationConnector Association="PetWebModel.FK__Sucursal__Veteri__4316F928" />
         <AssociationConnector Association="PetWebModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>

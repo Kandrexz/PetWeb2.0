@@ -22,22 +22,25 @@ namespace PetWeb2._0.Models
     
         public int Id { get; set; }
         public int Microchip { get; set; }
-        public Nullable<int> IdCliente { get; set; }
-        public Nullable<int> RutCliente { get; set; }
-        public int Especie { get; set; }
         public string Nombre { get; set; }
         public string Sexo { get; set; }
         public double Peso { get; set; }
         public string Color { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
-        public byte[] Foto { get; set; }
-        public string CausaDefuncion { get; set; }
         public string ObservacionDefuncion { get; set; }
-        public System.DateTime FecheDefuncion { get; set; }
+        public Nullable<int> Rut { get; set; }
+        public string CausaDefuncion { get; set; }
+        public string FechaDefuncion { get; set; }
+        public byte[] Foto { get; set; }
+        public Nullable<int> Raza { get; set; }
+        public Nullable<int> Especie { get; set; }
+        public string Estilizado { get; set; }
+        public string Defuncion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AtencionVeterinaria> AtencionVeterinaria { get; set; }
         public virtual DueñoMascota DueñoMascota { get; set; }
         public virtual Especie Especie1 { get; set; }
+        public virtual Raza Raza1 { get; set; }
     }
 }

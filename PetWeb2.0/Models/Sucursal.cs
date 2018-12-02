@@ -17,22 +17,22 @@ namespace PetWeb2._0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sucursal()
         {
+            this.AspNetUsers = new HashSet<AspNetUsers>();
             this.AtencionVeterinaria = new HashSet<AtencionVeterinaria>();
-            this.Ubicacion = new HashSet<Ubicacion>();
         }
     
         public int Id { get; set; }
         public int Veterinaria { get; set; }
-        public string Usuario { get; set; }
         public string Patente { get; set; }
         public string Correo { get; set; }
         public short Fono { get; set; }
+        public string Direccion { get; set; }
+        public string Region { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AtencionVeterinaria> AtencionVeterinaria { get; set; }
         public virtual Veterinaria Veterinaria1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ubicacion> Ubicacion { get; set; }
     }
 }

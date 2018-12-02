@@ -15,15 +15,12 @@ namespace PetWeb2._0.Models
     public partial class Ubicacion
     {
         public int Id { get; set; }
-        public int Sucursal { get; set; }
-        public Nullable<int> IdCliente { get; set; }
-        public Nullable<int> RutCliente { get; set; }
         public string Region { get; set; }
         public string Ciudad { get; set; }
         public string Calle { get; set; }
         public string Numero { get; set; }
+        public Nullable<int> DueñoMascota { get; set; }
     
-        public virtual DueñoMascota DueñoMascota { get; set; }
-        public virtual Sucursal Sucursal1 { get; set; }
+        public virtual DueñoMascota DueñoMascota1 { get; set; }
     }
 }

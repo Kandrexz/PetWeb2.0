@@ -1,0 +1,33 @@
+﻿@model PetWeb2._0.Models.VW_NuevaFicha
+<head>
+
+
+
+</head>
+
+
+
+
+<div>
+    <div>
+        <h4>
+            @Html.DisplayFor(model => model.Nombre)
+        </h4>
+        <h4>
+            @Html.DisplayFor(model => model.Microchip)
+        </h4>
+        <h4>
+            @Html.DisplayFor(model => model.Rut)
+        </h4>
+    </div>
+
+    <div>
+        @Html.ActionLink("Ver Ficha", "Details", new { Rut = Model.Rut })
+    </div>
+    <div>
+        @Html.ActionLink("Modificar Ficha Clinica", "HomeClinico", new { Microchip = Model.Microchip })
+    </div>
+    <div>
+        @Html.ActionLink("Ver Ficha Clinica", "Details", new { })
+    </div>
+</div>
