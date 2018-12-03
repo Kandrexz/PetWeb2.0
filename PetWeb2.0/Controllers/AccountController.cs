@@ -169,7 +169,7 @@ namespace PetWeb2._0.Controllers
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
-            return View(model);
+            return PartialView(model);
         }
 
         //

@@ -25,7 +25,7 @@ namespace PetWeb2._0.Models
         public int Veterinaria { get; set; }
         public string Patente { get; set; }
         public string Correo { get; set; }
-        public short Fono { get; set; }
+        public Nullable<int> Fono { get; set; }
         public string Direccion { get; set; }
         public string Region { get; set; }
     

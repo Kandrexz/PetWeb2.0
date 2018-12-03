@@ -31,7 +31,6 @@ namespace PetWeb2._0.Models
         public System.TimeSpan Hora { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
-        public virtual Sucursal Sucursal1 { get; set; }
         public virtual Mascota Mascota { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ControlDesparacitaciones> ControlDesparacitaciones { get; set; }
@@ -39,5 +38,6 @@ namespace PetWeb2._0.Models
         public virtual ICollection<ControlVacuna> ControlVacuna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamenClinico> ExamenClinico { get; set; }
+        public virtual Sucursal Sucursal1 { get; set; }
     }
 }

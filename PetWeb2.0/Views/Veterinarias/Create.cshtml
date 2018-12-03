@@ -1,0 +1,129 @@
+﻿@model PetWeb2._0.Models.Veterinaria
+
+
+<head>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/Stylo.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome/css/font-awesome.min.css" />
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        
+        .f1 {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 12px;
+        }
+        h3{
+            text-align:center;
+        }
+        .f1-steps{
+            padding:10px;
+            margin-left:100px;
+
+        }
+     
+    </style>
+</head>
+
+
+<div class="top-content">
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                <form role="form" action="" method="post" class="f1" >
+
+                    <h3>Registro Veterinario</h3>
+                    
+                    <div class="f1-steps" >
+                        <div class="f1-progress" >
+                            <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
+                        </div>
+                        <div class="f1-step active ">
+                            <div class="f1-step-icon"><i class="fa fa-user" style="margin-left: 13px;"></i></div>
+                            <p>Veterinaria</p>
+                        </div>
+                        <div class="f1-step ">
+                            <div class="f1-step-icon"><i class="fa fa-phone" style="margin-left: 13px;"></i></div>
+                            <p>Sucursal</p>
+                        </div>
+                        <div class="f1-step">
+                            <div class="f1-step-icon"><i class="fa fa-map-marker" style="margin-left: 13px;"></i></div>
+                            <p>Usuario</p>
+                        </div>
+                        
+                    </div>
+
+                    <fieldset>
+                      
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                             
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Rut, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Fono, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Fono, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Fono, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </fieldset>
+
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

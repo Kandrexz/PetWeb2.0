@@ -201,6 +201,9 @@
     <Compile Include="Controllers\DueñoMascotaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SucursalsController.cs" />
+    <Compile Include="Controllers\UbicacionsController.cs" />
+    <Compile Include="Controllers\VeterinariasController.cs" />
     <Compile Include="Controllers\VW_NuevaFichaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -422,6 +425,21 @@
     <Content Include="Views\VW_NuevaFicha\Edit.cshtml" />
     <Content Include="Views\VW_NuevaFicha\Index.cshtml" />
     <Content Include="Views\VW_NuevaFicha\View.cshtml" />
+    <Content Include="Views\Veterinarias\Delete.cshtml" />
+    <Content Include="Views\Veterinarias\Details.cshtml" />
+    <Content Include="Views\Veterinarias\Edit.cshtml" />
+    <Content Include="Views\Veterinarias\Index.cshtml" />
+    <Content Include="Views\Sucursals\Delete.cshtml" />
+    <Content Include="Views\Sucursals\Details.cshtml" />
+    <Content Include="Views\Sucursals\Edit.cshtml" />
+    <Content Include="Views\Sucursals\Index.cshtml" />
+    <Content Include="Views\Ubicacions\Create.cshtml" />
+    <Content Include="Views\Ubicacions\Delete.cshtml" />
+    <Content Include="Views\Ubicacions\Details.cshtml" />
+    <Content Include="Views\Ubicacions\Edit.cshtml" />
+    <Content Include="Views\Ubicacions\Index.cshtml" />
+    <Content Include="Views\Sucursals\Create.cshtml" />
+    <Content Include="Views\Veterinarias\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
