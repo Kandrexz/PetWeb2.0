@@ -15,19 +15,22 @@ namespace PetWeb2._0.Controllers
         private PetWebEntities db = new PetWebEntities();
 
         // GET: VW_Atencion
-        public ActionResult Index()
+        public ActionResult Index(int? Microchip )
+
         {
-            return PartialView(db.VW_Atencion.ToList());
+            var Microchips = db.AtencionVeterinaria.Include(e => e.Examen );
+
+            return PartialView(db.VW_Atencion.Where( x => x.Microchip == Microchip).ToList());
         }
 
         // GET: VW_Atencion/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? Microchip)
         {
-            if (id == null)
+            if (Microchip == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
+            VW_Atencion vW_Atencion = db.VW_Atencion.Find(Microchip);
             if (vW_Atencion == null)
             {
                 return HttpNotFound();

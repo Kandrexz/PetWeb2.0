@@ -21,14 +21,7 @@ namespace PetWeb2._0.Controllers
             return PartialView(examenClinico.ToList());
         }
         
-            public ActionResult Filtro(int? microchip)
-        {
-            var examenClinico = db.ExamenClinico.Include(e => e.Mascota);
-
-            return RedirectToAction("Index");
-
-            return PartialView(examenClinico.Where(x=>x.Microchip == microchip).ToList());
-        }
+        
 
         // GET: ExamenClinicoes/Details/5
         public ActionResult Details(int? id)

@@ -146,7 +146,7 @@
                     <div class="card-body">
                         <h5 class="card-title ">Ficha Clinica</h5>
                         <p class="card-text">Visualiza toda la informacion medica de la mascota</p>
-                        <button>@Html.ActionLink("Ver","FichaClinica", new { Microchip = Model.Microchip }) </button>
+                        <button class="btn btn-dark"> @Html.ActionLink("Ver","FichaClinica", new { Microchip = Model.Microchip }) </button>
                        
                     </div>
                 </div>
@@ -154,9 +154,9 @@
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <button>@Html.ActionLink("Atenciones Examenes", "Index","VW_Atencion") </button>
+                        <h5 class="card-title">Atenciones Examenes</h5>
+                        <p class="card-text">Visualiza las atenciones que se le realizaron a las mascotas en el contexto del examen clinico</p>
+                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Examenes", "Index","VW_Atencion", new { Microchip = Model.Microchip })</button>
                     </div>
                 </div>
             </div>

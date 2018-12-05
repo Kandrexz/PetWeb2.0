@@ -242,12 +242,7 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.NUEVAFICHA' no tiene definida nin
 advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_Atencion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_Atencion">
           <Key>
-            <PropertyRef Name="Nombre" />
             <PropertyRef Name="Microchip" />
-            <PropertyRef Name="Diagnostico" />
-            <PropertyRef Name="Tratamiento" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="Hora" />
           </Key>
           <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Microchip" Type="int" Nullable="false" />
@@ -1232,12 +1227,7 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
         </Association>
         <EntityType Name="VW_Atencion">
           <Key>
-            <PropertyRef Name="Nombre" />
             <PropertyRef Name="Microchip" />
-            <PropertyRef Name="Diagnostico" />
-            <PropertyRef Name="Tratamiento" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="Hora" />
           </Key>
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Microchip" Type="Int32" Nullable="false" />
