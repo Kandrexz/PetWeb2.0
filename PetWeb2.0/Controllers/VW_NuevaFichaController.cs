@@ -17,31 +17,17 @@ namespace PetWeb2._0.Controllers
         // GET: VW_NuevaFicha
         public ActionResult Index()
         {
-            return View(db.VW_NuevaFicha.ToList());
+            return PartialView(db.VW_NuevaFicha.ToList());
         }
 
         // GET: VW_NuevaFicha/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult HomeMascota (int? Microchip)
         {
-            if (id == null)
+            if (Microchip == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(id);
-            if (vW_NuevaFicha == null)
-            {
-                return HttpNotFound();
-            }
-            return View(vW_NuevaFicha);
-        }
-        /*Metodo que recibe el parametro desde la vista  */
-        public ActionResult View(int? Rut)
-        {
-            if (Rut == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(Rut);
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(Microchip);
             if (vW_NuevaFicha == null)
             {
                 return HttpNotFound();

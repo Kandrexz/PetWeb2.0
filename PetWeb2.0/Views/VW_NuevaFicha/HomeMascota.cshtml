@@ -1,0 +1,186 @@
+﻿@model PetWeb2._0.Models.VW_NuevaFicha
+
+<head>
+    <title>Home de petweb</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        body {
+           
+            background: url(../../Content/Icon/Fondo.jpg);
+        }
+        #Datos {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            padding: 12px;
+            color: white;
+        }
+        #PrincipalDatos {
+            padding-left: 150px;
+            padding-right: 150px;
+            padding-top:50px;
+        }
+        #Direcciones {
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            Home Mascota
+        </a>
+    </nav>
+    <div class="container" id="PrincipalDatos">
+
+        <div class="row">
+
+            <div class="col">
+                <div id="Datos">
+                    <h3>Datos Dueño</h3>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Apellido)
+                        @Html.DisplayFor(model => model.Apellido)
+                    </dt>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Rut)
+                        @Html.DisplayFor(model => model.Rut)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fono_Contacto)
+                        @Html.DisplayFor(model => model.Fono_Contacto)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayNameFor(model => model.Region)
+                        @Html.DisplayFor(model => model.Region)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ciudad)
+                        @Html.DisplayFor(model => model.Ciudad)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero)
+                        @Html.DisplayFor(model => model.Numero)
+                    </dt>
+
+                </div>
+
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <div id="Datos">
+
+                    <h3>Datos Mascota</h3>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre_Mascota)
+                        @Html.DisplayFor(model => model.Nombre_Mascota)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaNacimiento)
+                        @Html.DisplayFor(model => model.FechaNacimiento)
+                    </dt>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Peso)
+                        @Html.DisplayFor(model => model.Peso)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sexo)
+                        @Html.DisplayFor(model => model.Sexo)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Tipo)
+                        @Html.DisplayFor(model => model.Tipo)
+                    </dt>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Raza)
+                        @Html.DisplayFor(model => model.Raza)
+                    </dt>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div id="Direcciones">
+        <div class="row text-center">
+            <div class="col-sm-4" >
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title ">Ficha Clinica</h5>
+                        <p class="card-text">Visualiza toda la informacion medica de la mascota</p>
+                        <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+
+</body>
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Microchip }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

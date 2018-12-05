@@ -37,12 +37,13 @@ namespace PetWeb2._0.Controllers
         }
 
         // GET: Sucursals/Create
-        public ActionResult Create()
+        public ActionResult Create(int? idVeterinaria) 
         {
             ViewBag.Veterinaria = new SelectList(db.Veterinaria, "Id", "Nombre");
+            ViewBag.IdVeterinaria = Request.QueryString["parameter1"]; 
             return View();
         }
-
+        
         // POST: Sucursals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -62,6 +63,7 @@ namespace PetWeb2._0.Controllers
             }
 
             ViewBag.Veterinaria = new SelectList(db.Veterinaria, "Id", "Nombre", sucursal.Veterinaria);
+            
             return PartialView(sucursal);
         }
 

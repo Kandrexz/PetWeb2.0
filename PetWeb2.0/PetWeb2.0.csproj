@@ -419,12 +419,6 @@
     <Content Include="Views\DueñoMascota\Details.cshtml" />
     <Content Include="Views\DueñoMascota\Edit.cshtml" />
     <Content Include="Views\DueñoMascota\Index.cshtml" />
-    <Content Include="Views\VW_NuevaFicha\Create.cshtml" />
-    <Content Include="Views\VW_NuevaFicha\Delete.cshtml" />
-    <Content Include="Views\VW_NuevaFicha\Details.cshtml" />
-    <Content Include="Views\VW_NuevaFicha\Edit.cshtml" />
-    <Content Include="Views\VW_NuevaFicha\Index.cshtml" />
-    <Content Include="Views\VW_NuevaFicha\View.cshtml" />
     <Content Include="Views\Veterinarias\Delete.cshtml" />
     <Content Include="Views\Veterinarias\Details.cshtml" />
     <Content Include="Views\Veterinarias\Edit.cshtml" />
@@ -440,6 +434,12 @@
     <Content Include="Views\Ubicacions\Index.cshtml" />
     <Content Include="Views\Sucursals\Create.cshtml" />
     <Content Include="Views\Veterinarias\Create.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\Create.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\Delete.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\Details.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\Edit.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\Index.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\HomeMascota.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

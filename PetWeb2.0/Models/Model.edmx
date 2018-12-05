@@ -240,19 +240,7 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.NUEVAFICHA' no tiene definida nin
 advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_NuevaFicha">
           <Key>
-            <PropertyRef Name="Rut" />
-            <PropertyRef Name="Fono Contacto" />
-            <PropertyRef Name="Region" />
-            <PropertyRef Name="Ciudad" />
-            <PropertyRef Name="Calle" />
-            <PropertyRef Name="Numero" />
-            <PropertyRef Name="Nombre Mascota" />
             <PropertyRef Name="Microchip" />
-            <PropertyRef Name="FechaNacimiento" />
-            <PropertyRef Name="Peso" />
-            <PropertyRef Name="Sexo" />
-            <PropertyRef Name="Tipo" />
-            <PropertyRef Name="Raza" />
           </Key>
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
           <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
@@ -952,19 +940,7 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
         </EntityType>
         <EntityType Name="VW_NuevaFicha">
           <Key>
-            <PropertyRef Name="Rut" />
-            <PropertyRef Name="Fono_Contacto" />
-            <PropertyRef Name="Region" />
-            <PropertyRef Name="Ciudad" />
-            <PropertyRef Name="Calle" />
-            <PropertyRef Name="Numero" />
-            <PropertyRef Name="Nombre_Mascota" />
             <PropertyRef Name="Microchip" />
-            <PropertyRef Name="FechaNacimiento" />
-            <PropertyRef Name="Peso" />
-            <PropertyRef Name="Sexo" />
-            <PropertyRef Name="Tipo" />
-            <PropertyRef Name="Raza" />
           </Key>
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

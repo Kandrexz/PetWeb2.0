@@ -34,10 +34,17 @@ namespace PetWeb2._0.Controllers
             }
             return View(veterinaria);
         }
+ 
+        public ActionResult Create(int? id)
+        { 
+            Veterinaria veterinaria = null;
 
-        // GET: Veterinarias/Create
-        public ActionResult Create()
-        {
+            if(id != null)
+            {
+                veterinaria = db.Veterinaria.Find(id);
+                return View(veterinaria);
+            }
+          
             return View();
         }
 
@@ -50,15 +57,19 @@ namespace PetWeb2._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Veterinaria.Add(veterinaria);
-                db.SaveChanges();
-                return RedirectToAction("Create","Sucursals");
+              
+                    db.Veterinaria.Add(veterinaria);
+               
+                    db.SaveChanges(); 
+
+                return RedirectToAction("Create","Sucursals", new { id = db.Veterinaria.Find(veterinaria.Id).Id } );//Sucrusals/Create/11..
+
             }
             else
             {
                 return RedirectToAction("Create", "Sucursals");
             }
-
+           
             return View(veterinaria);
         }
 

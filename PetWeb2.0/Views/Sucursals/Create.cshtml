@@ -84,7 +84,8 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Veterinaria, "Veterinaria", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @Html.DropDownList("Veterinaria", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("Veterinaria",null
+                                       , htmlAttributes: new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Veterinaria, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -130,7 +131,15 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
+                                    <div class="col-md-offset-2 col-md-4">
+                                        <p>@ViewBag.IdVeterinaria;</p>
+                                        @{
+                                            @Html.ActionLink("Atras", "Create", "Veterinarias", new { id = @ViewBag.IdVeterinaria }, new { @class = "btn btn-default" })
+
+                                        }
+                                    </div>
+
+                                    <div class="col-md-offset-2 col-md-4">
                                         <input type="submit" value="Create" class="btn btn-default" />
                                     </div>
                                 </div>
