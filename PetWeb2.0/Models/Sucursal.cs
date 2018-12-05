@@ -18,7 +18,6 @@ namespace PetWeb2._0.Models
         public Sucursal()
         {
             this.AspNetUsers = new HashSet<AspNetUsers>();
-            this.AtencionVeterinaria = new HashSet<AtencionVeterinaria>();
         }
     
         public int Id { get; set; }
@@ -31,8 +30,6 @@ namespace PetWeb2._0.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AtencionVeterinaria> AtencionVeterinaria { get; set; }
         public virtual Veterinaria Veterinaria1 { get; set; }
     }
 }

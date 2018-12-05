@@ -1,0 +1,91 @@
+﻿@model PetWeb2._0.Models.ExamenClinico
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_ViewStart.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ExamenClinico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotivoConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotivoConsulta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrecuenciaCardiaca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrecuenciaCardiaca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemperaturaPaciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemperaturaPaciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anamnesis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anamnesis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnostico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnostico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tratamiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tratamiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

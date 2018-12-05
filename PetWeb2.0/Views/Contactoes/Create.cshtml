@@ -1,4 +1,5 @@
-﻿@model PetWeb2._0.Models.DueñoMascota
+﻿@model PetWeb2._0.Models.Contacto
+
 
 <head>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
@@ -42,17 +43,17 @@
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
                 <form role="form" action="" method="post" class="f1">
-                    <h3>Registro Dueño de Mascota</h3>
+                    <h3>Registro de Contacto</h3>
 
                     <div class="f1-steps">
                         <div class="f1-progress">
                             <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="4" style="width: 16.66%;"></div>
                         </div>
-                        <div class="f1-step active ">
+                        <div class="f1-step ">
                             <div class="f1-step-icon"><i class="fa fa-user" style="margin-left: 13px;"></i></div>
                             <p>Dueño de mascota</p>
                         </div>
-                        <div class="f1-step ">
+                        <div class="f1-step active">
                             <div class="f1-step-icon"><i class="fa fa-phone" style="margin-left: 13px;"></i></div>
                             <p>Datos Contacto</p>
                         </div>
@@ -69,28 +70,19 @@
 
                     <fieldset>
 
-
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
 
                             <div class="form-horizontal">
-                                <h4>DueñoMascota</h4>
+                                <h4>Contacto</h4>
                                 <hr />
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Rut, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.Fono, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Fono, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Fono, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
@@ -99,6 +91,14 @@
                                     <div class="col-md-10">
                                         @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Rut, "Rut", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Rut", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
@@ -124,6 +124,10 @@
         </div>
 
     </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

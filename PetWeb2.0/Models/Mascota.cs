@@ -17,7 +17,9 @@ namespace PetWeb2._0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Mascota()
         {
-            this.AtencionVeterinaria = new HashSet<AtencionVeterinaria>();
+            this.ControlDesparacitaciones = new HashSet<ControlDesparacitaciones>();
+            this.ControlVacuna = new HashSet<ControlVacuna>();
+            this.ExamenClinico = new HashSet<ExamenClinico>();
         }
     
         public int Id { get; set; }
@@ -38,9 +40,13 @@ namespace PetWeb2._0.Models
         public string Defuncion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AtencionVeterinaria> AtencionVeterinaria { get; set; }
+        public virtual ICollection<ControlDesparacitaciones> ControlDesparacitaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ControlVacuna> ControlVacuna { get; set; }
         public virtual DueñoMascota DueñoMascota { get; set; }
         public virtual Especie Especie1 { get; set; }
         public virtual Raza Raza1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamenClinico> ExamenClinico { get; set; }
     }
 }

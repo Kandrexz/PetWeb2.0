@@ -14,9 +14,14 @@ namespace PetWeb2._0.Models
     
     public partial class ExamenClinico
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ExamenClinico()
+        {
+            this.AtencionVeterinaria = new HashSet<AtencionVeterinaria>();
+        }
+    
         public int Id { get; set; }
-        public int Atencion { get; set; }
-        public System.DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
         public string MotivoConsulta { get; set; }
         public int FrecuenciaCardiaca { get; set; }
         public double TemperaturaPaciente { get; set; }
@@ -24,7 +29,11 @@ namespace PetWeb2._0.Models
         public string Diagnostico { get; set; }
         public string Tratamiento { get; set; }
         public string Tipo { get; set; }
+        public Nullable<int> IdMascota { get; set; }
+        public Nullable<int> Microchip { get; set; }
     
-        public virtual AtencionVeterinaria AtencionVeterinaria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AtencionVeterinaria> AtencionVeterinaria { get; set; }
+        public virtual Mascota Mascota { get; set; }
     }
 }

@@ -198,12 +198,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactoesController.cs" />
     <Compile Include="Controllers\DueñoMascotaController.cs" />
+    <Compile Include="Controllers\ExamenClinicoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MascotasController.cs" />
     <Compile Include="Controllers\SucursalsController.cs" />
     <Compile Include="Controllers\UbicacionsController.cs" />
     <Compile Include="Controllers\VeterinariasController.cs" />
+    <Compile Include="Controllers\VW_AtencionController.cs" />
     <Compile Include="Controllers\VW_NuevaFichaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -281,6 +285,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Veterinaria.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VW_Atencion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VW_NuevaFicha.cs">
@@ -414,7 +421,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\DueñoMascota\Create.cshtml" />
     <Content Include="Views\DueñoMascota\Delete.cshtml" />
     <Content Include="Views\DueñoMascota\Details.cshtml" />
     <Content Include="Views\DueñoMascota\Edit.cshtml" />
@@ -427,7 +433,6 @@
     <Content Include="Views\Sucursals\Details.cshtml" />
     <Content Include="Views\Sucursals\Edit.cshtml" />
     <Content Include="Views\Sucursals\Index.cshtml" />
-    <Content Include="Views\Ubicacions\Create.cshtml" />
     <Content Include="Views\Ubicacions\Delete.cshtml" />
     <Content Include="Views\Ubicacions\Details.cshtml" />
     <Content Include="Views\Ubicacions\Edit.cshtml" />
@@ -440,6 +445,29 @@
     <Content Include="Views\VW_NuevaFicha\Edit.cshtml" />
     <Content Include="Views\VW_NuevaFicha\Index.cshtml" />
     <Content Include="Views\VW_NuevaFicha\HomeMascota.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\FichaClinica.cshtml" />
+    <Content Include="Views\ExamenClinicoes\Delete.cshtml" />
+    <Content Include="Views\ExamenClinicoes\Details.cshtml" />
+    <Content Include="Views\ExamenClinicoes\Edit.cshtml" />
+    <Content Include="Views\ExamenClinicoes\Index.cshtml" />
+    <Content Include="Views\ExamenClinicoes\Create.cshtml" />
+    <Content Include="Views\Contactoes\Delete.cshtml" />
+    <Content Include="Views\Contactoes\Details.cshtml" />
+    <Content Include="Views\Contactoes\Edit.cshtml" />
+    <Content Include="Views\Contactoes\Index.cshtml" />
+    <Content Include="Views\Contactoes\Create.cshtml" />
+    <Content Include="Views\DueñoMascota\Create.cshtml" />
+    <Content Include="Views\Ubicacions\Create.cshtml" />
+    <Content Include="Views\Mascotas\Delete.cshtml" />
+    <Content Include="Views\Mascotas\Details.cshtml" />
+    <Content Include="Views\Mascotas\Edit.cshtml" />
+    <Content Include="Views\Mascotas\Index.cshtml" />
+    <Content Include="Views\Mascotas\Create.cshtml" />
+    <Content Include="Views\VW_Atencion\Create.cshtml" />
+    <Content Include="Views\VW_Atencion\Delete.cshtml" />
+    <Content Include="Views\VW_Atencion\Details.cshtml" />
+    <Content Include="Views\VW_Atencion\Edit.cshtml" />
+    <Content Include="Views\VW_Atencion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

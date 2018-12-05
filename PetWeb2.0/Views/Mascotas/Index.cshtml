@@ -1,0 +1,112 @@
+﻿@model IEnumerable<PetWeb2._0.Models.Mascota>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_ViewStart.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObservacionDefuncion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CausaDefuncion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaDefuncion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estilizado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Defuncion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueñoMascota.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especie1.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Raza1.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ObservacionDefuncion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CausaDefuncion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaDefuncion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estilizado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Defuncion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueñoMascota.Correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especie1.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Raza1.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -36,14 +36,15 @@ namespace PetWeb2._0.Models
         public virtual DbSet<ControlVacuna> ControlVacuna { get; set; }
         public virtual DbSet<DueñoMascota> DueñoMascota { get; set; }
         public virtual DbSet<Especie> Especie { get; set; }
-        public virtual DbSet<ExamenClinico> ExamenClinico { get; set; }
         public virtual DbSet<Mascota> Mascota { get; set; }
         public virtual DbSet<Raza> Raza { get; set; }
+        public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Ubicacion> Ubicacion { get; set; }
         public virtual DbSet<Veterinaria> Veterinaria { get; set; }
         public virtual DbSet<NUEVAFICHA> NUEVAFICHA { get; set; }
         public virtual DbSet<VW_NuevaFicha> VW_NuevaFicha { get; set; }
-        public virtual DbSet<Sucursal> Sucursal { get; set; }
+        public virtual DbSet<ExamenClinico> ExamenClinico { get; set; }
+        public virtual DbSet<VW_Atencion> VW_Atencion { get; set; }
     }
 }

@@ -35,6 +35,21 @@ namespace PetWeb2._0.Controllers
             return PartialView(vW_NuevaFicha);
         }
 
+        public ActionResult FichaClinica(int? Microchip) {
+
+         
+            if (Microchip == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(Microchip);
+            if (vW_NuevaFicha == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(vW_NuevaFicha);
+        }
+
         // GET: VW_NuevaFicha/Create
         public ActionResult Create()
         {

@@ -10,108 +10,107 @@ using PetWeb2._0.Models;
 
 namespace PetWeb2._0.Controllers
 {
-    public class DueñoMascotaController : Controller
+    public class VW_AtencionController : Controller
     {
         private PetWebEntities db = new PetWebEntities();
 
-        // GET: DueñoMascota
+        // GET: VW_Atencion
         public ActionResult Index()
         {
-            return View(db.DueñoMascota.ToList());
+            return PartialView(db.VW_Atencion.ToList());
         }
 
-        // GET: DueñoMascota/Details/5
-        public ActionResult Details(int? id)
+        // GET: VW_Atencion/Details/5
+        public ActionResult Details(string id)
         {
-            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            if (dueñoMascota == null)
+            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
+            if (vW_Atencion == null)
             {
                 return HttpNotFound();
             }
-            return View(dueñoMascota);
+            return View(vW_Atencion);
         }
 
-        // GET: DueñoMascota/Create
+        // GET: VW_Atencion/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DueñoMascota/Create
+        // POST: VW_Atencion/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Rut,Correo,Nombre,Apellido")] DueñoMascota dueñoMascota)
+        public ActionResult Create([Bind(Include = "Nombre,Microchip,Anamnesis,Diagnostico,Tratamiento,Fecha,Hora")] VW_Atencion vW_Atencion)
         {
             if (ModelState.IsValid)
             {
-                db.DueñoMascota.Add(dueñoMascota);
-                db.SaveChanges();
-                return RedirectToAction("Create","Contactoes");
-            }
-
-            return PartialView(dueñoMascota);
-        }
-
-        // GET: DueñoMascota/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            if (dueñoMascota == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dueñoMascota);
-        }
-
-        // POST: DueñoMascota/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Rut,Correo,Nombre,Apellido")] DueñoMascota dueñoMascota)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dueñoMascota).State = EntityState.Modified;
+                db.VW_Atencion.Add(vW_Atencion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dueñoMascota);
+
+            return View(vW_Atencion);
         }
 
-        // GET: DueñoMascota/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: VW_Atencion/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            if (dueñoMascota == null)
+            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
+            if (vW_Atencion == null)
             {
                 return HttpNotFound();
             }
-            return View(dueñoMascota);
+            return View(vW_Atencion);
         }
 
-        // POST: DueñoMascota/Delete/5
+        // POST: VW_Atencion/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Nombre,Microchip,Anamnesis,Diagnostico,Tratamiento,Fecha,Hora")] VW_Atencion vW_Atencion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(vW_Atencion).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(vW_Atencion);
+        }
+
+        // GET: VW_Atencion/Delete/5
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
+            if (vW_Atencion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(vW_Atencion);
+        }
+
+        // POST: VW_Atencion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            db.DueñoMascota.Remove(dueñoMascota);
+            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
+            db.VW_Atencion.Remove(vW_Atencion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

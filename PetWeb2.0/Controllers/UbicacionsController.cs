@@ -39,7 +39,7 @@ namespace PetWeb2._0.Controllers
         // GET: Ubicacions/Create
         public ActionResult Create()
         {
-            ViewBag.DueñoMascota = new SelectList(db.DueñoMascota, "Rut", "Correo");
+            ViewBag.DueñoMascota = new SelectList(db.DueñoMascota, "Rut", "Rut");
             return View();
         }
 
@@ -54,11 +54,11 @@ namespace PetWeb2._0.Controllers
             {
                 db.Ubicacion.Add(ubicacion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Mascotas");
             }
 
-            ViewBag.DueñoMascota = new SelectList(db.DueñoMascota, "Rut", "Correo", ubicacion.DueñoMascota);
-            return View(ubicacion);
+            ViewBag.DueñoMascota = new SelectList(db.DueñoMascota, "Rut", "Rut", ubicacion.DueñoMascota);
+            return PartialView(ubicacion);
         }
 
         // GET: Ubicacions/Edit/5

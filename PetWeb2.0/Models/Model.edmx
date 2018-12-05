@@ -73,12 +73,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Usuario" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Sucursal" Type="int" Nullable="false" />
-          <Property Name="IdMascota" Type="int" />
-          <Property Name="Microchip" Type="int" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Examen" Type="int" />
+          <Property Name="Desparacitacion" Type="int" />
+          <Property Name="Vacuna" Type="int" />
         </EntityType>
         <EntityType Name="Contacto">
           <Key>
@@ -95,7 +94,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Atencion" Type="int" Nullable="false" />
           <Property Name="Peso" Type="float" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="ProximaFecha" Type="date" Nullable="false" />
@@ -103,13 +101,14 @@
           <Property Name="Dosis" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ViaAdministracion" Type="varchar" MaxLength="30" />
           <Property Name="Desparacitador" Type="varchar" MaxLength="50" />
+          <Property Name="IdMascota" Type="int" />
+          <Property Name="Microchip" Type="int" />
         </EntityType>
         <EntityType Name="ControlVacuna">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Atencion" Type="int" Nullable="false" />
           <Property Name="Temperatura" Type="float" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="ProximaFecha" Type="date" Nullable="false" />
@@ -117,6 +116,8 @@
           <Property Name="Dosis" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ViaAdministracion" Type="varchar" MaxLength="30" />
           <Property Name="Vacuna" Type="varchar" MaxLength="50" />
+          <Property Name="IdMascota" Type="int" />
+          <Property Name="Microchip" Type="int" />
         </EntityType>
         <EntityType Name="DueñoMascota">
           <Key>
@@ -139,8 +140,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Atencion" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="15" />
           <Property Name="MotivoConsulta" Type="varchar" MaxLength="20" />
           <Property Name="FrecuenciaCardiaca" Type="int" Nullable="false" />
           <Property Name="TemperaturaPaciente" Type="float" Nullable="false" />
@@ -148,6 +148,8 @@
           <Property Name="Diagnostico" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Tratamiento" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdMascota" Type="int" />
+          <Property Name="Microchip" Type="int" />
         </EntityType>
         <EntityType Name="Mascota">
           <Key>
@@ -237,10 +239,41 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.NUEVAFICHA' no tiene definida nin
           <Property Name="Fono" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_Atencion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VW_Atencion">
+          <Key>
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Microchip" />
+            <PropertyRef Name="Diagnostico" />
+            <PropertyRef Name="Tratamiento" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="Hora" />
+          </Key>
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Microchip" Type="int" Nullable="false" />
+          <Property Name="Anamnesis" Type="varchar" MaxLength="150" />
+          <Property Name="Diagnostico" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tratamiento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_NuevaFicha">
           <Key>
+            
+            
+            
+            
+            
+            
+            
             <PropertyRef Name="Microchip" />
+            
+            
+            
+            
+            
           </Key>
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
           <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
@@ -270,41 +303,39 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionV__Sucur__38996AB5">
-          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+        <Association Name="FK__AtencionV__Despa__1AD3FDA4">
+          <End Role="ControlDesparacitaciones" Type="Self.ControlDesparacitaciones" Multiplicity="0..1" />
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Sucursal">
+            <Principal Role="ControlDesparacitaciones">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AtencionVeterinaria">
-              <PropertyRef Name="Sucursal" />
+              <PropertyRef Name="Desparacitacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionV__Usuar__398D8EEE">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+        <Association Name="FK__AtencionV__Exame__19DFD96B">
+          <End Role="ExamenClinico" Type="Self.ExamenClinico" Multiplicity="0..1" />
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="ExamenClinico">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AtencionVeterinaria">
-              <PropertyRef Name="Usuario" />
+              <PropertyRef Name="Examen" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionVeterina__3A81B327">
-          <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
+        <Association Name="FK__AtencionV__Vacun__1BC821DD">
+          <End Role="ControlVacuna" Type="Self.ControlVacuna" Multiplicity="0..1" />
           <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Mascota">
+            <Principal Role="ControlVacuna">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="Microchip" />
             </Principal>
             <Dependent Role="AtencionVeterinaria">
-              <PropertyRef Name="IdMascota" />
-              <PropertyRef Name="Microchip" />
+              <PropertyRef Name="Vacuna" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -320,39 +351,45 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ControlDe__Atenc__3C69FB99">
-          <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="1" />
+        <Association Name="FK__ControlDesparaci__1DB06A4F">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
           <End Role="ControlDesparacitaciones" Type="Self.ControlDesparacitaciones" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AtencionVeterinaria">
+            <Principal Role="Mascota">
               <PropertyRef Name="Id" />
+              <PropertyRef Name="Microchip" />
             </Principal>
             <Dependent Role="ControlDesparacitaciones">
-              <PropertyRef Name="Atencion" />
+              <PropertyRef Name="IdMascota" />
+              <PropertyRef Name="Microchip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ControlVa__Atenc__3D5E1FD2">
-          <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="1" />
+        <Association Name="FK__ControlVacuna__1EA48E88">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
           <End Role="ControlVacuna" Type="Self.ControlVacuna" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AtencionVeterinaria">
+            <Principal Role="Mascota">
               <PropertyRef Name="Id" />
+              <PropertyRef Name="Microchip" />
             </Principal>
             <Dependent Role="ControlVacuna">
-              <PropertyRef Name="Atencion" />
+              <PropertyRef Name="IdMascota" />
+              <PropertyRef Name="Microchip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ExamenCli__Atenc__3F466844">
-          <End Role="AtencionVeterinaria" Type="Self.AtencionVeterinaria" Multiplicity="1" />
+        <Association Name="FK__ExamenClinico__1CBC4616">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
           <End Role="ExamenClinico" Type="Self.ExamenClinico" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AtencionVeterinaria">
+            <Principal Role="Mascota">
               <PropertyRef Name="Id" />
+              <PropertyRef Name="Microchip" />
             </Principal>
             <Dependent Role="ExamenClinico">
-              <PropertyRef Name="Atencion" />
+              <PropertyRef Name="IdMascota" />
+              <PropertyRef Name="Microchip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -512,6 +549,17 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
     [NUEVAFICHA].[Fono] AS [Fono]
     FROM [dbo].[NUEVAFICHA] AS [NUEVAFICHA]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VW_Atencion" EntityType="Self.VW_Atencion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_Atencion].[Nombre] AS [Nombre], 
+    [VW_Atencion].[Microchip] AS [Microchip], 
+    [VW_Atencion].[Anamnesis] AS [Anamnesis], 
+    [VW_Atencion].[Diagnostico] AS [Diagnostico], 
+    [VW_Atencion].[Tratamiento] AS [Tratamiento], 
+    [VW_Atencion].[Fecha] AS [Fecha], 
+    [VW_Atencion].[Hora] AS [Hora]
+    FROM [dbo].[VW_Atencion] AS [VW_Atencion]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VW_NuevaFicha" EntityType="Self.VW_NuevaFicha" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VW_NuevaFicha].[Nombre] AS [Nombre], 
@@ -535,32 +583,32 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Sucur__38996AB5" Association="Self.FK__AtencionV__Sucur__38996AB5">
-            <End Role="Sucursal" EntitySet="Sucursal" />
+          <AssociationSet Name="FK__AtencionV__Despa__1AD3FDA4" Association="Self.FK__AtencionV__Despa__1AD3FDA4">
+            <End Role="ControlDesparacitaciones" EntitySet="ControlDesparacitaciones" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Usuar__398D8EEE" Association="Self.FK__AtencionV__Usuar__398D8EEE">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          <AssociationSet Name="FK__AtencionV__Exame__19DFD96B" Association="Self.FK__AtencionV__Exame__19DFD96B">
+            <End Role="ExamenClinico" EntitySet="ExamenClinico" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionVeterina__3A81B327" Association="Self.FK__AtencionVeterina__3A81B327">
-            <End Role="Mascota" EntitySet="Mascota" />
+          <AssociationSet Name="FK__AtencionV__Vacun__1BC821DD" Association="Self.FK__AtencionV__Vacun__1BC821DD">
+            <End Role="ControlVacuna" EntitySet="ControlVacuna" />
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
           <AssociationSet Name="FK__Contacto__Rut__5441852A" Association="Self.FK__Contacto__Rut__5441852A">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
             <End Role="Contacto" EntitySet="Contacto" />
           </AssociationSet>
-          <AssociationSet Name="FK__ControlDe__Atenc__3C69FB99" Association="Self.FK__ControlDe__Atenc__3C69FB99">
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
+          <AssociationSet Name="FK__ControlDesparaci__1DB06A4F" Association="Self.FK__ControlDesparaci__1DB06A4F">
+            <End Role="Mascota" EntitySet="Mascota" />
             <End Role="ControlDesparacitaciones" EntitySet="ControlDesparacitaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__ControlVa__Atenc__3D5E1FD2" Association="Self.FK__ControlVa__Atenc__3D5E1FD2">
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
+          <AssociationSet Name="FK__ControlVacuna__1EA48E88" Association="Self.FK__ControlVacuna__1EA48E88">
+            <End Role="Mascota" EntitySet="Mascota" />
             <End Role="ControlVacuna" EntitySet="ControlVacuna" />
           </AssociationSet>
-          <AssociationSet Name="FK__ExamenCli__Atenc__3F466844" Association="Self.FK__ExamenCli__Atenc__3F466844">
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
+          <AssociationSet Name="FK__ExamenClinico__1CBC4616" Association="Self.FK__ExamenClinico__1CBC4616">
+            <End Role="Mascota" EntitySet="Mascota" />
             <End Role="ExamenClinico" EntitySet="ExamenClinico" />
           </AssociationSet>
           <AssociationSet Name="FK__Mascota__Especie__71D1E811" Association="Self.FK__Mascota__Especie__71D1E811">
@@ -620,9 +668,9 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <EntitySet Name="ControlVacuna" EntityType="PetWebModel.ControlVacuna" />
           <EntitySet Name="DueñoMascota" EntityType="PetWebModel.DueñoMascota" />
           <EntitySet Name="Especie" EntityType="PetWebModel.Especie" />
-          <EntitySet Name="ExamenClinico" EntityType="PetWebModel.ExamenClinico" />
           <EntitySet Name="Mascota" EntityType="PetWebModel.Mascota" />
           <EntitySet Name="Raza" EntityType="PetWebModel.Raza" />
+          <EntitySet Name="Sucursal" EntityType="PetWebModel.Sucursal" />
           <EntitySet Name="sysdiagrams" EntityType="PetWebModel.sysdiagrams" />
           <EntitySet Name="Ubicacion" EntityType="PetWebModel.Ubicacion" />
           <EntitySet Name="Veterinaria" EntityType="PetWebModel.Veterinaria" />
@@ -636,29 +684,29 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Usuar__398D8EEE" Association="PetWebModel.FK__AtencionV__Usuar__398D8EEE">
+          <AssociationSet Name="FK__AspNetUse__Sucur__01142BA1" Association="PetWebModel.FK__AspNetUse__Sucur__01142BA1">
+            <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
           </AssociationSet>
-          <AssociationSet Name="FK__AtencionVeterina__3A81B327" Association="PetWebModel.FK__AtencionVeterina__3A81B327">
-            <End Role="Mascota" EntitySet="Mascota" />
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ControlDe__Atenc__3C69FB99" Association="PetWebModel.FK__ControlDe__Atenc__3C69FB99">
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
+          <AssociationSet Name="FK__AtencionV__Despa__1AD3FDA4" Association="PetWebModel.FK__AtencionV__Despa__1AD3FDA4">
             <End Role="ControlDesparacitaciones" EntitySet="ControlDesparacitaciones" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ControlVa__Atenc__3D5E1FD2" Association="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AtencionV__Vacun__1BC821DD" Association="PetWebModel.FK__AtencionV__Vacun__1BC821DD">
             <End Role="ControlVacuna" EntitySet="ControlVacuna" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ExamenCli__Atenc__3F466844" Association="PetWebModel.FK__ExamenCli__Atenc__3F466844">
             <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
-            <End Role="ExamenClinico" EntitySet="ExamenClinico" />
           </AssociationSet>
           <AssociationSet Name="FK__Contacto__Rut__5441852A" Association="PetWebModel.FK__Contacto__Rut__5441852A">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
             <End Role="Contacto" EntitySet="Contacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ControlDesparaci__1DB06A4F" Association="PetWebModel.FK__ControlDesparaci__1DB06A4F">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="ControlDesparacitaciones" EntitySet="ControlDesparacitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ControlVacuna__1EA48E88" Association="PetWebModel.FK__ControlVacuna__1EA48E88">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="ControlVacuna" EntitySet="ControlVacuna" />
           </AssociationSet>
           <AssociationSet Name="FK__Mascota__Rut__5535A963" Association="PetWebModel.FK__Mascota__Rut__5535A963">
             <End Role="DueñoMascota" EntitySet="DueñoMascota" />
@@ -680,23 +728,24 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             <End Role="Raza" EntitySet="Raza" />
             <End Role="Mascota" EntitySet="Mascota" />
           </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="PetWebModel.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="Sucursal" EntityType="PetWebModel.Sucursal" />
-          <AssociationSet Name="FK__AspNetUse__Sucur__01142BA1" Association="PetWebModel.FK__AspNetUse__Sucur__01142BA1">
-            <End Role="Sucursal" EntitySet="Sucursal" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AtencionV__Sucur__38996AB5" Association="PetWebModel.FK__AtencionV__Sucur__38996AB5">
-            <End Role="Sucursal" EntitySet="Sucursal" />
-            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
-          </AssociationSet>
           <AssociationSet Name="FK__Sucursal__Veteri__4316F928" Association="PetWebModel.FK__Sucursal__Veteri__4316F928">
             <End Role="Veterinaria" EntitySet="Veterinaria" />
             <End Role="Sucursal" EntitySet="Sucursal" />
           </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="PetWebModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="ExamenClinico" EntityType="PetWebModel.ExamenClinico" />
+          <AssociationSet Name="FK__AtencionV__Exame__19DFD96B" Association="PetWebModel.FK__AtencionV__Exame__19DFD96B">
+            <End Role="ExamenClinico" EntitySet="ExamenClinico" />
+            <End Role="AtencionVeterinaria" EntitySet="AtencionVeterinaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExamenClinico__1CBC4616" Association="PetWebModel.FK__ExamenClinico__1CBC4616">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="ExamenClinico" EntitySet="ExamenClinico" />
+          </AssociationSet>
+          <EntitySet Name="VW_Atencion" EntityType="PetWebModel.VW_Atencion" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -757,27 +806,22 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <Property Name="Sucursal" Type="Int32" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="PetWebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="PetWebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Usuar__398D8EEE" FromRole="AspNetUsers" ToRole="AtencionVeterinaria" />
-          <NavigationProperty Name="AspNetRoles" Relationship="PetWebModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="Sucursal1" Relationship="PetWebModel.FK__AspNetUse__Sucur__01142BA1" FromRole="AspNetUsers" ToRole="Sucursal" />
+          <NavigationProperty Name="AspNetRoles" Relationship="PetWebModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="AtencionVeterinaria">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Sucursal" Type="Int32" Nullable="false" />
-          <Property Name="IdMascota" Type="Int32" />
-          <Property Name="Microchip" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__AtencionV__Usuar__398D8EEE" FromRole="AtencionVeterinaria" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__AtencionVeterina__3A81B327" FromRole="AtencionVeterinaria" ToRole="Mascota" />
-          <NavigationProperty Name="ControlDesparacitaciones" Relationship="PetWebModel.FK__ControlDe__Atenc__3C69FB99" FromRole="AtencionVeterinaria" ToRole="ControlDesparacitaciones" />
-          <NavigationProperty Name="ControlVacuna" Relationship="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2" FromRole="AtencionVeterinaria" ToRole="ControlVacuna" />
-          <NavigationProperty Name="ExamenClinico" Relationship="PetWebModel.FK__ExamenCli__Atenc__3F466844" FromRole="AtencionVeterinaria" ToRole="ExamenClinico" />
-          <NavigationProperty Name="Sucursal1" Relationship="PetWebModel.FK__AtencionV__Sucur__38996AB5" FromRole="AtencionVeterinaria" ToRole="Sucursal" />
+          <Property Name="Examen" Type="Int32" />
+          <Property Name="Desparacitacion" Type="Int32" />
+          <Property Name="Vacuna" Type="Int32" />
+          <NavigationProperty Name="ControlDesparacitaciones" Relationship="PetWebModel.FK__AtencionV__Despa__1AD3FDA4" FromRole="AtencionVeterinaria" ToRole="ControlDesparacitaciones" />
+          <NavigationProperty Name="ControlVacuna" Relationship="PetWebModel.FK__AtencionV__Vacun__1BC821DD" FromRole="AtencionVeterinaria" ToRole="ControlVacuna" />
+          <NavigationProperty Name="ExamenClinico" Relationship="PetWebModel.FK__AtencionV__Exame__19DFD96B" FromRole="AtencionVeterinaria" ToRole="ExamenClinico" />
         </EntityType>
         <EntityType Name="Contacto">
           <Key>
@@ -795,7 +839,6 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Atencion" Type="Int32" Nullable="false" />
           <Property Name="Peso" Type="Double" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ProximaFecha" Type="DateTime" Nullable="false" Precision="0" />
@@ -803,14 +846,16 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <Property Name="Dosis" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ViaAdministracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Desparacitador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ControlDe__Atenc__3C69FB99" FromRole="ControlDesparacitaciones" ToRole="AtencionVeterinaria" />
+          <Property Name="IdMascota" Type="Int32" />
+          <Property Name="Microchip" Type="Int32" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Despa__1AD3FDA4" FromRole="ControlDesparacitaciones" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__ControlDesparaci__1DB06A4F" FromRole="ControlDesparacitaciones" ToRole="Mascota" />
         </EntityType>
         <EntityType Name="ControlVacuna">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Atencion" Type="Int32" Nullable="false" />
           <Property Name="Temperatura" Type="Double" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ProximaFecha" Type="DateTime" Nullable="false" Precision="0" />
@@ -818,7 +863,10 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <Property Name="Dosis" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ViaAdministracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Vacuna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ControlVa__Atenc__3D5E1FD2" FromRole="ControlVacuna" ToRole="AtencionVeterinaria" />
+          <Property Name="IdMascota" Type="Int32" />
+          <Property Name="Microchip" Type="Int32" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Vacun__1BC821DD" FromRole="ControlVacuna" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__ControlVacuna__1EA48E88" FromRole="ControlVacuna" ToRole="Mascota" />
         </EntityType>
         <EntityType Name="DueñoMascota">
           <Key>
@@ -841,22 +889,6 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__Especie__71D1E811" FromRole="Especie" ToRole="Mascota" />
           <NavigationProperty Name="Raza" Relationship="PetWebModel.FK__Raza__Especie__6EF57B66" FromRole="Especie" ToRole="Raza" />
         </EntityType>
-        <EntityType Name="ExamenClinico">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Atencion" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="MotivoConsulta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="FrecuenciaCardiaca" Type="Int32" Nullable="false" />
-          <Property Name="TemperaturaPaciente" Type="Double" Nullable="false" />
-          <Property Name="Anamnesis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Diagnostico" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Tratamiento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__ExamenCli__Atenc__3F466844" FromRole="ExamenClinico" ToRole="AtencionVeterinaria" />
-        </EntityType>
         <EntityType Name="Mascota">
           <Key>
             <PropertyRef Name="Id" />
@@ -878,10 +910,12 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <Property Name="Especie" Type="Int32" />
           <Property Name="Estilizado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Defuncion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionVeterina__3A81B327" FromRole="Mascota" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="ControlDesparacitaciones" Relationship="PetWebModel.FK__ControlDesparaci__1DB06A4F" FromRole="Mascota" ToRole="ControlDesparacitaciones" />
+          <NavigationProperty Name="ControlVacuna" Relationship="PetWebModel.FK__ControlVacuna__1EA48E88" FromRole="Mascota" ToRole="ControlVacuna" />
           <NavigationProperty Name="DueñoMascota" Relationship="PetWebModel.FK__Mascota__Rut__5535A963" FromRole="Mascota" ToRole="DueñoMascota" />
           <NavigationProperty Name="Especie1" Relationship="PetWebModel.FK__Mascota__Especie__71D1E811" FromRole="Mascota" ToRole="Especie" />
           <NavigationProperty Name="Raza1" Relationship="PetWebModel.FK__Mascota__Raza__6FE99F9F" FromRole="Mascota" ToRole="Raza" />
+          <NavigationProperty Name="ExamenClinico" Relationship="PetWebModel.FK__ExamenClinico__1CBC4616" FromRole="Mascota" ToRole="ExamenClinico" />
         </EntityType>
         <EntityType Name="Raza">
           <Key>
@@ -892,6 +926,20 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <Property Name="Especie" Type="Int32" />
           <NavigationProperty Name="Especie1" Relationship="PetWebModel.FK__Raza__Especie__6EF57B66" FromRole="Raza" ToRole="Especie" />
           <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__Mascota__Raza__6FE99F9F" FromRole="Raza" ToRole="Mascota" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Veterinaria" Type="Int32" Nullable="false" />
+          <Property Name="Patente" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fono" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__AspNetUse__Sucur__01142BA1" FromRole="Sucursal" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Veterinaria1" Relationship="PetWebModel.FK__Sucursal__Veteri__4316F928" FromRole="Sucursal" ToRole="Veterinaria" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -986,65 +1034,39 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionV__Usuar__398D8EEE">
-          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+        <Association Name="FK__AspNetUse__Sucur__01142BA1">
+          <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="0..1" />
+          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AtencionV__Despa__1AD3FDA4">
+          <End Type="PetWebModel.ControlDesparacitaciones" Role="ControlDesparacitaciones" Multiplicity="0..1" />
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="ControlDesparacitaciones">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AtencionVeterinaria">
-              <PropertyRef Name="Usuario" />
+              <PropertyRef Name="Desparacitacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AtencionVeterina__3A81B327">
-          <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="0..1" />
+        <Association Name="FK__AtencionV__Vacun__1BC821DD">
+          <End Type="PetWebModel.ControlVacuna" Role="ControlVacuna" Multiplicity="0..1" />
           <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Mascota">
+            <Principal Role="ControlVacuna">
               <PropertyRef Name="Id" />
-              <PropertyRef Name="Microchip" />
             </Principal>
             <Dependent Role="AtencionVeterinaria">
-              <PropertyRef Name="IdMascota" />
-              <PropertyRef Name="Microchip" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ControlDe__Atenc__3C69FB99">
-          <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="1" />
-          <End Type="PetWebModel.ControlDesparacitaciones" Role="ControlDesparacitaciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AtencionVeterinaria">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ControlDesparacitaciones">
-              <PropertyRef Name="Atencion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ControlVa__Atenc__3D5E1FD2">
-          <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="1" />
-          <End Type="PetWebModel.ControlVacuna" Role="ControlVacuna" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AtencionVeterinaria">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ControlVacuna">
-              <PropertyRef Name="Atencion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ExamenCli__Atenc__3F466844">
-          <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="1" />
-          <End Type="PetWebModel.ExamenClinico" Role="ExamenClinico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AtencionVeterinaria">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ExamenClinico">
-              <PropertyRef Name="Atencion" />
+              <PropertyRef Name="Vacuna" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1057,6 +1079,34 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             </Principal>
             <Dependent Role="Contacto">
               <PropertyRef Name="Rut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ControlDesparaci__1DB06A4F">
+          <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="0..1" />
+          <End Type="PetWebModel.ControlDesparacitaciones" Role="ControlDesparacitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Microchip" />
+            </Principal>
+            <Dependent Role="ControlDesparacitaciones">
+              <PropertyRef Name="IdMascota" />
+              <PropertyRef Name="Microchip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ControlVacuna__1EA48E88">
+          <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="0..1" />
+          <End Type="PetWebModel.ControlVacuna" Role="ControlVacuna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Microchip" />
+            </Principal>
+            <Dependent Role="ControlVacuna">
+              <PropertyRef Name="IdMascota" />
+              <PropertyRef Name="Microchip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1120,49 +1170,6 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="PetWebModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
-          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Sucursal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Veterinaria" Type="Int32" Nullable="false" />
-          <Property Name="Patente" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Correo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Fono" Type="Int32" />
-          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="PetWebModel.FK__AspNetUse__Sucur__01142BA1" FromRole="Sucursal" ToRole="AspNetUsers" />
-          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Sucur__38996AB5" FromRole="Sucursal" ToRole="AtencionVeterinaria" />
-          <NavigationProperty Name="Veterinaria1" Relationship="PetWebModel.FK__Sucursal__Veteri__4316F928" FromRole="Sucursal" ToRole="Veterinaria" />
-        </EntityType>
-        <Association Name="FK__AspNetUse__Sucur__01142BA1">
-          <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="0..1" />
-          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursal">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="Sucursal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AtencionV__Sucur__38996AB5">
-          <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="1" />
-          <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursal">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AtencionVeterinaria">
-              <PropertyRef Name="Sucursal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Sucursal__Veteri__4316F928">
           <End Type="PetWebModel.Veterinaria" Role="Veterinaria" Multiplicity="1" />
           <End Type="PetWebModel.Sucursal" Role="Sucursal" Multiplicity="*" />
@@ -1175,7 +1182,72 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="AspNetUserRoles">
+          <End Type="PetWebModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="PetWebModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ExamenClinico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MotivoConsulta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FrecuenciaCardiaca" Type="Int32" Nullable="false" />
+          <Property Name="TemperaturaPaciente" Type="Double" Nullable="false" />
+          <Property Name="Anamnesis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Diagnostico" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tratamiento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdMascota" Type="Int32" />
+          <Property Name="Microchip" Type="Int32" />
+          <NavigationProperty Name="AtencionVeterinaria" Relationship="PetWebModel.FK__AtencionV__Exame__19DFD96B" FromRole="ExamenClinico" ToRole="AtencionVeterinaria" />
+          <NavigationProperty Name="Mascota" Relationship="PetWebModel.FK__ExamenClinico__1CBC4616" FromRole="ExamenClinico" ToRole="Mascota" />
+        </EntityType>
+        <Association Name="FK__AtencionV__Exame__19DFD96B">
+          <End Type="PetWebModel.ExamenClinico" Role="ExamenClinico" Multiplicity="0..1" />
+          <End Type="PetWebModel.AtencionVeterinaria" Role="AtencionVeterinaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamenClinico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AtencionVeterinaria">
+              <PropertyRef Name="Examen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExamenClinico__1CBC4616">
+          <End Type="PetWebModel.Mascota" Role="Mascota" Multiplicity="0..1" />
+          <End Type="PetWebModel.ExamenClinico" Role="ExamenClinico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Microchip" />
+            </Principal>
+            <Dependent Role="ExamenClinico">
+              <PropertyRef Name="IdMascota" />
+              <PropertyRef Name="Microchip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VW_Atencion">
+          <Key>
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Microchip" />
+            <PropertyRef Name="Diagnostico" />
+            <PropertyRef Name="Tratamiento" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="Hora" />
+          </Key>
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Microchip" Type="Int32" Nullable="false" />
+          <Property Name="Anamnesis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Diagnostico" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tratamiento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1241,12 +1313,11 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <EntitySetMapping Name="AtencionVeterinaria">
             <EntityTypeMapping TypeName="PetWebModel.AtencionVeterinaria">
               <MappingFragment StoreEntitySet="AtencionVeterinaria">
+                <ScalarProperty Name="Vacuna" ColumnName="Vacuna" />
+                <ScalarProperty Name="Desparacitacion" ColumnName="Desparacitacion" />
+                <ScalarProperty Name="Examen" ColumnName="Examen" />
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Microchip" ColumnName="Microchip" />
-                <ScalarProperty Name="IdMascota" ColumnName="IdMascota" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1265,6 +1336,8 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <EntitySetMapping Name="ControlDesparacitaciones">
             <EntityTypeMapping TypeName="PetWebModel.ControlDesparacitaciones">
               <MappingFragment StoreEntitySet="ControlDesparacitaciones">
+                <ScalarProperty Name="Microchip" ColumnName="Microchip" />
+                <ScalarProperty Name="IdMascota" ColumnName="IdMascota" />
                 <ScalarProperty Name="Desparacitador" ColumnName="Desparacitador" />
                 <ScalarProperty Name="ViaAdministracion" ColumnName="ViaAdministracion" />
                 <ScalarProperty Name="Dosis" ColumnName="Dosis" />
@@ -1272,7 +1345,6 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
                 <ScalarProperty Name="ProximaFecha" ColumnName="ProximaFecha" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Peso" ColumnName="Peso" />
-                <ScalarProperty Name="Atencion" ColumnName="Atencion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1280,6 +1352,8 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
           <EntitySetMapping Name="ControlVacuna">
             <EntityTypeMapping TypeName="PetWebModel.ControlVacuna">
               <MappingFragment StoreEntitySet="ControlVacuna">
+                <ScalarProperty Name="Microchip" ColumnName="Microchip" />
+                <ScalarProperty Name="IdMascota" ColumnName="IdMascota" />
                 <ScalarProperty Name="Vacuna" ColumnName="Vacuna" />
                 <ScalarProperty Name="ViaAdministracion" ColumnName="ViaAdministracion" />
                 <ScalarProperty Name="Dosis" ColumnName="Dosis" />
@@ -1287,7 +1361,6 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
                 <ScalarProperty Name="ProximaFecha" ColumnName="ProximaFecha" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
-                <ScalarProperty Name="Atencion" ColumnName="Atencion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1306,22 +1379,6 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
             <EntityTypeMapping TypeName="PetWebModel.Especie">
               <MappingFragment StoreEntitySet="Especie">
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ExamenClinico">
-            <EntityTypeMapping TypeName="PetWebModel.ExamenClinico">
-              <MappingFragment StoreEntitySet="ExamenClinico">
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
-                <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
-                <ScalarProperty Name="Anamnesis" ColumnName="Anamnesis" />
-                <ScalarProperty Name="TemperaturaPaciente" ColumnName="TemperaturaPaciente" />
-                <ScalarProperty Name="FrecuenciaCardiaca" ColumnName="FrecuenciaCardiaca" />
-                <ScalarProperty Name="MotivoConsulta" ColumnName="MotivoConsulta" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Atencion" ColumnName="Atencion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1353,6 +1410,19 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
               <MappingFragment StoreEntitySet="Raza">
                 <ScalarProperty Name="Especie" ColumnName="Especie" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="PetWebModel.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Patente" ColumnName="Patente" />
+                <ScalarProperty Name="Veterinaria" ColumnName="Veterinaria" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1430,16 +1500,33 @@ advertencia 6002: La tabla o vista 'PetWeb.dbo.VW_NuevaFicha' no tiene definida 
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Sucursal">
-            <EntityTypeMapping TypeName="PetWebModel.Sucursal">
-              <MappingFragment StoreEntitySet="Sucursal">
-                <ScalarProperty Name="Region" ColumnName="Region" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Fono" ColumnName="Fono" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="Patente" ColumnName="Patente" />
-                <ScalarProperty Name="Veterinaria" ColumnName="Veterinaria" />
+          <EntitySetMapping Name="ExamenClinico">
+            <EntityTypeMapping TypeName="PetWebModel.ExamenClinico">
+              <MappingFragment StoreEntitySet="ExamenClinico">
+                <ScalarProperty Name="Microchip" ColumnName="Microchip" />
+                <ScalarProperty Name="IdMascota" ColumnName="IdMascota" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+                <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+                <ScalarProperty Name="Anamnesis" ColumnName="Anamnesis" />
+                <ScalarProperty Name="TemperaturaPaciente" ColumnName="TemperaturaPaciente" />
+                <ScalarProperty Name="FrecuenciaCardiaca" ColumnName="FrecuenciaCardiaca" />
+                <ScalarProperty Name="MotivoConsulta" ColumnName="MotivoConsulta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_Atencion">
+            <EntityTypeMapping TypeName="PetWebModel.VW_Atencion">
+              <MappingFragment StoreEntitySet="VW_Atencion">
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+                <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+                <ScalarProperty Name="Anamnesis" ColumnName="Anamnesis" />
+                <ScalarProperty Name="Microchip" ColumnName="Microchip" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -10,108 +10,112 @@ using PetWeb2._0.Models;
 
 namespace PetWeb2._0.Controllers
 {
-    public class DueñoMascotaController : Controller
+    public class ContactoesController : Controller
     {
         private PetWebEntities db = new PetWebEntities();
 
-        // GET: DueñoMascota
+        // GET: Contactoes
         public ActionResult Index()
         {
-            return View(db.DueñoMascota.ToList());
+            var contacto = db.Contacto.Include(c => c.DueñoMascota);
+            return View(contacto.ToList());
         }
 
-        // GET: DueñoMascota/Details/5
+        // GET: Contactoes/Details/5
         public ActionResult Details(int? id)
         {
-            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            if (dueñoMascota == null)
+            Contacto contacto = db.Contacto.Find(id);
+            if (contacto == null)
             {
                 return HttpNotFound();
             }
-            return View(dueñoMascota);
+            return View(contacto);
         }
 
-        // GET: DueñoMascota/Create
+        // GET: Contactoes/Create
         public ActionResult Create()
         {
+            ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Rut");
             return View();
         }
 
-        // POST: DueñoMascota/Create
+        // POST: Contactoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Rut,Correo,Nombre,Apellido")] DueñoMascota dueñoMascota)
+        public ActionResult Create([Bind(Include = "Id,Fono,Nombre,Rut,Apellido")] Contacto contacto)
         {
             if (ModelState.IsValid)
             {
-                db.DueñoMascota.Add(dueñoMascota);
+                db.Contacto.Add(contacto);
                 db.SaveChanges();
-                return RedirectToAction("Create","Contactoes");
+                return RedirectToAction("Create","Ubicacions");
             }
 
-            return PartialView(dueñoMascota);
+            ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Rut", contacto.Rut);
+            return PartialView(contacto);
         }
 
-        // GET: DueñoMascota/Edit/5
+        // GET: Contactoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            if (dueñoMascota == null)
+            Contacto contacto = db.Contacto.Find(id);
+            if (contacto == null)
             {
                 return HttpNotFound();
             }
-            return View(dueñoMascota);
+            ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Correo", contacto.Rut);
+            return View(contacto);
         }
 
-        // POST: DueñoMascota/Edit/5
+        // POST: Contactoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Rut,Correo,Nombre,Apellido")] DueñoMascota dueñoMascota)
+        public ActionResult Edit([Bind(Include = "Id,Fono,Nombre,Rut,Apellido")] Contacto contacto)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dueñoMascota).State = EntityState.Modified;
+                db.Entry(contacto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dueñoMascota);
+            ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Correo", contacto.Rut);
+            return View(contacto);
         }
 
-        // GET: DueñoMascota/Delete/5
+        // GET: Contactoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            if (dueñoMascota == null)
+            Contacto contacto = db.Contacto.Find(id);
+            if (contacto == null)
             {
                 return HttpNotFound();
             }
-            return View(dueñoMascota);
+            return View(contacto);
         }
 
-        // POST: DueñoMascota/Delete/5
+        // POST: Contactoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DueñoMascota dueñoMascota = db.DueñoMascota.Find(id);
-            db.DueñoMascota.Remove(dueñoMascota);
+            Contacto contacto = db.Contacto.Find(id);
+            db.Contacto.Remove(contacto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
