@@ -34,8 +34,10 @@ namespace PetWeb2._0.Models
         public virtual DbSet<Contacto> Contacto { get; set; }
         public virtual DbSet<ControlDesparacitaciones> ControlDesparacitaciones { get; set; }
         public virtual DbSet<ControlVacuna> ControlVacuna { get; set; }
+        public virtual DbSet<Defuncion> Defuncion { get; set; }
         public virtual DbSet<DueñoMascota> DueñoMascota { get; set; }
         public virtual DbSet<Especie> Especie { get; set; }
+        public virtual DbSet<ExamenClinico> ExamenClinico { get; set; }
         public virtual DbSet<Mascota> Mascota { get; set; }
         public virtual DbSet<Raza> Raza { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
@@ -43,8 +45,10 @@ namespace PetWeb2._0.Models
         public virtual DbSet<Ubicacion> Ubicacion { get; set; }
         public virtual DbSet<Veterinaria> Veterinaria { get; set; }
         public virtual DbSet<NUEVAFICHA> NUEVAFICHA { get; set; }
-        public virtual DbSet<VW_NuevaFicha> VW_NuevaFicha { get; set; }
-        public virtual DbSet<ExamenClinico> ExamenClinico { get; set; }
         public virtual DbSet<VW_Atencion> VW_Atencion { get; set; }
+        public virtual DbSet<VW_ControlDesparacitacion> VW_ControlDesparacitacion { get; set; }
+        public virtual DbSet<VW_ControlVacuna> VW_ControlVacuna { get; set; }
+        public virtual DbSet<VW_Defunciones> VW_Defunciones { get; set; }
+        public virtual DbSet<VW_NuevaFicha> VW_NuevaFicha { get; set; }
     }
 }

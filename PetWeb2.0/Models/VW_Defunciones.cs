@@ -12,17 +12,16 @@ namespace PetWeb2._0.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AtencionVeterinaria
+    public partial class VW_Defunciones
     {
-        public int Id { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public System.TimeSpan Hora { get; set; }
-        public Nullable<int> Examen { get; set; }
-        public Nullable<int> Desparacitacion { get; set; }
-        public Nullable<int> Vacuna { get; set; }
-    
-        public virtual ControlDesparacitaciones ControlDesparacitaciones { get; set; }
-        public virtual ExamenClinico ExamenClinico { get; set; }
-        public virtual ControlVacuna ControlVacuna { get; set; }
+        public string Nombre_Dueño { get; set; }
+        public string Apellido_Dueño { get; set; }
+        public int Rut_Dueño { get; set; }
+        public int Numero_Microchip { get; set; }
+        public string Nombre_Mascota { get; set; }
+        public string Observacion_Defuncion { get; set; }
+        public string Causa_defuncion { get; set; }
+        public Nullable<System.DateTime> Fecha_Defuncion { get; set; }
+        public string Defuncion { get; set; }
     }
 }
