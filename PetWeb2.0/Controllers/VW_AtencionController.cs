@@ -18,9 +18,15 @@ namespace PetWeb2._0.Controllers
         public ActionResult Index(int? Microchip )
 
         {
-            var Microchips = db.AtencionVeterinaria.Include(e => e.Examen );
+            var Atencion = from s in db.VW_Atencion
+                          select s;
 
-            return PartialView(db.VW_Atencion.Where( x => x.Microchip == Microchip).ToList());
+            Atencion = Atencion.Where(s => s.Microchip == (Microchip));
+          
+
+
+
+            return PartialView(Atencion.ToList());
         }
 
         // GET: VW_Atencion/Details/5

@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactoesController.cs" />
+    <Compile Include="Controllers\ControlDesparacitacionesController.cs" />
     <Compile Include="Controllers\DueñoMascotaController.cs" />
     <Compile Include="Controllers\ExamenClinicoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -460,14 +461,20 @@
     <Content Include="Views\Ubicacions\Create.cshtml" />
     <Content Include="Views\Mascotas\Delete.cshtml" />
     <Content Include="Views\Mascotas\Details.cshtml" />
-    <Content Include="Views\Mascotas\Edit.cshtml" />
-    <Content Include="Views\Mascotas\Index.cshtml" />
     <Content Include="Views\Mascotas\Create.cshtml" />
     <Content Include="Views\VW_Atencion\Create.cshtml" />
     <Content Include="Views\VW_Atencion\Delete.cshtml" />
     <Content Include="Views\VW_Atencion\Details.cshtml" />
     <Content Include="Views\VW_Atencion\Edit.cshtml" />
     <Content Include="Views\VW_Atencion\Index.cshtml" />
+    <Content Include="Views\VW_NuevaFicha\HomeInscripcion.cshtml" />
+    <Content Include="Views\Mascotas\Edit.cshtml" />
+    <Content Include="Views\Mascotas\Index.cshtml" />
+    <Content Include="Views\ControlDesparacitaciones\Delete.cshtml" />
+    <Content Include="Views\ControlDesparacitaciones\Details.cshtml" />
+    <Content Include="Views\ControlDesparacitaciones\Create.cshtml" />
+    <Content Include="Views\ControlDesparacitaciones\Index.cshtml" />
+    <Content Include="Views\ControlDesparacitaciones\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

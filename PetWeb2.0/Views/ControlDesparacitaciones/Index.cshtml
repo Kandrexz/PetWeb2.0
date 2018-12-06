@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PetWeb2._0.Models.ControlDesparacitaciones>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProximaFecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dosis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViaAdministracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desparacitador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mascota.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProximaFecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dosis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViaAdministracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desparacitador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mascota.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

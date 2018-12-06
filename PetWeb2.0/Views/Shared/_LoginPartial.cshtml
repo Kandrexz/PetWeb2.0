@@ -13,11 +13,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li class="PositionSal">
-                @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", style = "color:#43EBD9; text-decoration:none;" })
-            </li>
-        </ul>
+       
     }
 }
 else

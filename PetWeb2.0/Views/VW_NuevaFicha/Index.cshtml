@@ -6,83 +6,128 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
-<body>
-    <table class="table table-hover ">
-        <thead class=" thead-dark ">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Microchip)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre_Mascota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Raza)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Sexo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Tipo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Apellido)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Rut)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Numero)
-                </th>
-                <th>
-                    Detalle
-                </th>
+<body style="background: url(../../Content/Icon/Fondo.jpg)">
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr class="bg-success">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Microchip)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre_Mascota)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Raza)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sexo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tipo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Apellido)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Rut)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Numero)
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-secondary btn-sm">
-                            @Html.ActionLink("Ver", "HomeMascota", new { Microchip = item.Microchip }) 
-                        </button>
-                        
+    @using (Html.BeginForm("Index", "VW_NuevaFicha", FormMethod.Get))
+    {
+        <p>
+            Buscar Mascota @Html.TextBox("BuscarMascota", ViewBag.CurrentFilter as string)
+            <input type="submit" value="BuscarMascota" />
+        </p>
+    }
 
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="container">
+        <
+           
+        <div class="row justify-content-around">
+            <div class="col-4">
+                <table class="table table-hover ">
+                    <thead class=" thead-dark ">
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Apellido)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Rut)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Numero)
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="bg-success">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Apellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Rut)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Numero)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                <table class="table table-hover ">
+                    <thead class=" thead-dark ">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Microchip)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre_Mascota)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Raza)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sexo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tipo)
+                            </th>
+
+                            <th>
+                                Detalle
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="bg-success">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Microchip)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre_Mascota)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Raza)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sexo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tipo)
+                                </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-secondary btn-sm">
+                                        @Html.ActionLink("Ver", "HomeMascota", new { Microchip = item.Microchip })
+                                    </button>
+
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+
+    
 </body>

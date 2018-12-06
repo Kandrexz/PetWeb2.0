@@ -18,7 +18,7 @@ namespace PetWeb2._0.Controllers
         public ActionResult Index()
         {
             var mascota = db.Mascota.Include(m => m.DueñoMascota).Include(m => m.Especie1).Include(m => m.Raza1);
-            return View(mascota.ToList());
+            return PartialView(mascota.ToList());
         }
 
         // GET: Mascotas/Details/5
@@ -55,8 +55,10 @@ namespace PetWeb2._0.Controllers
             if (ModelState.IsValid)
             {
                 db.Mascota.Add(mascota);
+                
                 db.SaveChanges();
-                return RedirectToAction("Index","VW_NuevaFicha");
+                
+                return RedirectToAction("HomeInscripcion", "VW_NuevaFicha", new {microchip = mascota.Microchip });
             }
 
             ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Rut", mascota.Rut);
@@ -80,7 +82,7 @@ namespace PetWeb2._0.Controllers
             ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Correo", mascota.Rut);
             ViewBag.Especie = new SelectList(db.Especie, "Id", "Tipo", mascota.Especie);
             ViewBag.Raza = new SelectList(db.Raza, "Id", "Nombre", mascota.Raza);
-            return View(mascota);
+            return PartialView(mascota);
         }
 
         // POST: Mascotas/Edit/5
@@ -99,7 +101,7 @@ namespace PetWeb2._0.Controllers
             ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Correo", mascota.Rut);
             ViewBag.Especie = new SelectList(db.Especie, "Id", "Tipo", mascota.Especie);
             ViewBag.Raza = new SelectList(db.Raza, "Id", "Nombre", mascota.Raza);
-            return View(mascota);
+            return PartialView(mascota);
         }
 
         // GET: Mascotas/Delete/5

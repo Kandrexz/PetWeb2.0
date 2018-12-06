@@ -15,9 +15,19 @@ namespace PetWeb2._0.Controllers
         private PetWebEntities db = new PetWebEntities();
 
         // GET: VW_NuevaFicha
-        public ActionResult Index()
+        public ActionResult Index(string BuscarMascota)
         {
-            return PartialView(db.VW_NuevaFicha.ToList());
+
+
+            var mascota = from s in db.VW_NuevaFicha
+                           select s;
+            if (!String.IsNullOrEmpty(BuscarMascota))
+            {
+                mascota = mascota.Where(s => s.Nombre_Mascota.Contains(BuscarMascota)
+                                       || s.Nombre.Contains(BuscarMascota));
+            }
+
+            return PartialView(mascota.ToList());
         }
 
         // GET: VW_NuevaFicha/Details/5
@@ -34,6 +44,23 @@ namespace PetWeb2._0.Controllers
             }
             return PartialView(vW_NuevaFicha);
         }
+
+        public ActionResult HomeInscripcion(int? Microchip)
+        {
+            if (Microchip == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            VW_NuevaFicha vW_NuevaFicha = db.VW_NuevaFicha.Find(Microchip);
+            if (vW_NuevaFicha == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(vW_NuevaFicha);
+        }
+
+
+
 
         public ActionResult FichaClinica(int? Microchip) {
 

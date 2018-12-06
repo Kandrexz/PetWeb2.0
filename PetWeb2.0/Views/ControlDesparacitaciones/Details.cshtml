@@ -1,0 +1,83 @@
+﻿@model PetWeb2._0.Models.ControlDesparacitaciones
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/VW_NuevaFicha/Create.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ControlDesparacitaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProximaFecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProximaFecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViaAdministracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViaAdministracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desparacitador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desparacitador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
