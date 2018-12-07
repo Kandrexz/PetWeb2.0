@@ -35,14 +35,15 @@
             <nav class="menu">
                 <ul>
                     <li>
-                        @Html.ActionLink("Nueva Ficha", "Create", "DueñoMascota", null, new { style = "color:#43EBD9; text-decoration:none;" })
+                        @Html.ActionLink("Pagina Principal ", "Index", "Home", null, new { style = "color:#43EBD9; text-decoration:none;" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Nueva Ficha Inscripcion", "Create", "DueñoMascota", null, new { style = "color:#43EBD9; text-decoration:none;" })
                     </li>
                     <li>
                         @Html.ActionLink("Ficha Medica Mascota", "Index", "Home", null, new { style = "color:#43EBD9; text-decoration:none;" })
                     </li>
-                    <li>
-                        @Html.ActionLink("Mis Mascotas", "Index", "Home", null, new { style = "color:#43EBD9; text-decoration:none;" })
-                    </li>
+
                     <li>
                         @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = "color:#43EBD9; text-decoration:none;" })
                     </li>

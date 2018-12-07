@@ -1,57 +1,62 @@
 ﻿@model IEnumerable<PetWeb2._0.Models.VW_Atencion>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Anamnesis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Diagnostico)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tratamiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hora)
-        </th>
-        <th></th>
-    </tr>
+<head>
+    <title>Home de petweb</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Anamnesis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Diagnostico)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tratamiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Microchip }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Microchip }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Microchip })
-        </td>
-    </tr>
-}
+<body style="background:url(../../Content/Icon/Fondo.jpg); padding:80px;">
 
-</table>
+    <table class="table" style="background-color: rgba(0, 0, 0, 0.6); color:aliceblue;">
+        <tr class="bg-info">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anamnesis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tratamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anamnesis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnostico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tratamiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hora)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</body>

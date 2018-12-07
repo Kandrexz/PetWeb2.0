@@ -5,7 +5,7 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <div class="form-horizontal" style="background-color: rgba(0, 0, 0, 0.6); color:aliceblue; padding:30px; border-radius: 12px;" >
         <h4>Defuncion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -66,7 +66,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Listado", "Index")
 </div>
 
 @section Scripts {

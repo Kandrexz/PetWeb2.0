@@ -8,17 +8,28 @@
 </head>
 <body style="background: url(../../Content/Icon/Fondo.jpg)">
 
-    @using (Html.BeginForm("Index", "VW_NuevaFicha", FormMethod.Get))
-    {
-        <p>
-            Buscar Mascota @Html.TextBox("BuscarMascota", ViewBag.CurrentFilter as string)
-            <input type="submit" value="BuscarMascota" />
-        </p>
-    }
+    <nav class="navbar navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">
+            Mascotas
+        </a>
+        @using (Html.BeginForm("Index", "VW_NuevaFicha", FormMethod.Get))
+        {
+            <p style="margin-left:200px;">
+                @Html.TextBox("BuscarMascota", ViewBag.CurrentFilter as string)
+                <input type="submit" value="BuscarMascota" class="btn btn-dark" />
+            </p>
+
+
+        }
+    </nav>
+    <br />
+    
+
+
 
     <div class="container">
         <
-           
+
         <div class="row justify-content-around">
             <div class="col-4">
                 <table class="table table-hover ">
@@ -123,11 +134,11 @@
                 </table>
             </div>
         </div>
-        
+
     </div>
 
-    
 
 
-    
+
+
 </body>

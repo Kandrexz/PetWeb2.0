@@ -40,6 +40,7 @@ namespace PetWeb2._0.Controllers
         public ActionResult Create()
         {
             ViewBag.IdMascota = new SelectList(db.Mascota, "Id", "Nombre");
+            ViewBag.Microchip = new SelectList(db.Mascota, "Microchip", "Microchip");
             return View();
         }
 
@@ -74,6 +75,7 @@ namespace PetWeb2._0.Controllers
                 return HttpNotFound();
             }
             ViewBag.IdMascota = new SelectList(db.Mascota, "Id", "Nombre", controlVacuna.IdMascota);
+            ViewBag.Microchip = new SelectList(db.Mascota, "Microchip", "Microchip", controlVacuna.Microchip);
             return View(controlVacuna);
         }
 

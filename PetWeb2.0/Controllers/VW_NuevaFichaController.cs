@@ -29,6 +29,7 @@ namespace PetWeb2._0.Controllers
 
             return PartialView(mascota.ToList());
         }
+        
 
         // GET: VW_NuevaFicha/Details/5
         public ActionResult HomeMascota (int? Microchip)
