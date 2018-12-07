@@ -1,0 +1,59 @@
+﻿@model PetWeb2._0.Models.Defuncion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Defuncion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ObservacionDefuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObservacionDefuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CausaDefuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CausaDefuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaDefuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaDefuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Defuncion1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Defuncion1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mascota.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

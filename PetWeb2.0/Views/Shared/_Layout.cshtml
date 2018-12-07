@@ -16,6 +16,11 @@
             position: relative;
             top:2px;
         }
+        #Card {
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            color: aliceblue;
+        }
     </style>
 </head>
 <body style="background: url(../../Content/Icon/Fondo.jpg)">
@@ -42,7 +47,7 @@
                         @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = "color:#43EBD9; text-decoration:none;" })
                     </li>
                     <li>
-                        @Html.ActionLink("Defunciones", "Index", "Home", null, new { style = "color:#43EBD9; text-decoration:none;" })
+                        @Html.ActionLink("Defunciones", "Index", "VW_Defunciones", null, new { style = "color:#43EBD9; text-decoration:none;" })
                     </li>
                     <li>
                         <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
@@ -50,21 +55,11 @@
                 </ul>
             </nav>
 
-
-
         }
 
     </header>
-   
-
 
 </body>
-
-
-
-
-
-
 
 <div class="container body-content">
     @RenderBody()

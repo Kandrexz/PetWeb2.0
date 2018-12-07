@@ -10,107 +10,117 @@ using PetWeb2._0.Models;
 
 namespace PetWeb2._0.Controllers
 {
-    public class VW_AtencionController : Controller
+    public class DefuncionsController : Controller
     {
         private PetWebEntities db = new PetWebEntities();
 
-        // GET: VW_Atencion
+        // GET: Defuncions
         public ActionResult Index()
         {
-            return PartialView(db.VW_Atencion.ToList());
+            var defuncion = db.Defuncion.Include(d => d.Mascota);
+            return View(defuncion.ToList());
         }
 
-        // GET: VW_Atencion/Details/5
+        // GET: Defuncions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            if (vW_Atencion == null)
+            Defuncion defuncion = db.Defuncion.Find(id);
+            if (defuncion == null)
             {
                 return HttpNotFound();
             }
-            return View(vW_Atencion);
+            return View(defuncion);
         }
 
-        // GET: VW_Atencion/Create
+        // GET: Defuncions/Create
         public ActionResult Create()
         {
+            ViewBag.MascotaId = new SelectList(db.Mascota, "Id", "Nombre");
+           
+            ViewBag.MascotaMicrochip = new SelectList(db.Mascota, "Microchip", "Nombre");
             return View();
         }
 
-        // POST: VW_Atencion/Create
+        // POST: Defuncions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nombre,Microchip,Anamnesis,Diagnostico,Tratamiento,Fecha,Hora")] VW_Atencion vW_Atencion)
+        public ActionResult Create([Bind(Include = "Id,ObservacionDefuncion,CausaDefuncion,FechaDefuncion,Defuncion1,MascotaId,MascotaMicrochip")] Defuncion defuncion)
         {
             if (ModelState.IsValid)
             {
-                db.VW_Atencion.Add(vW_Atencion);
+                db.Defuncion.Add(defuncion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","VW_Defunciones");
             }
 
-            return View(vW_Atencion);
+            ViewBag.MascotaId = new SelectList(db.Mascota, "Id", "Nombre", defuncion.MascotaId);
+            ViewBag.MascotaMicrochip = new SelectList(db.Mascota, "Microchip", "Nombre", defuncion.MascotaId);
+            return PartialView(defuncion);
         }
 
-        // GET: VW_Atencion/Edit/5
+        // GET: Defuncions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            if (vW_Atencion == null)
+            Defuncion defuncion = db.Defuncion.Find(id);
+            if (defuncion == null)
             {
                 return HttpNotFound();
             }
-            return View(vW_Atencion);
+            ViewBag.MascotaId = new SelectList(db.Mascota, "Id", "Nombre", defuncion.MascotaId);
+
+            return View(defuncion);
         }
 
-        // POST: VW_Atencion/Edit/5
+        // POST: Defuncions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Nombre,Microchip,Anamnesis,Diagnostico,Tratamiento,Fecha,Hora")] VW_Atencion vW_Atencion)
+        public ActionResult Edit([Bind(Include = "Id,ObservacionDefuncion,CausaDefuncion,FechaDefuncion,Defuncion1,MascotaId,MascotaMicrochip")] Defuncion defuncion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vW_Atencion).State = EntityState.Modified;
+                db.Entry(defuncion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vW_Atencion);
+            ViewBag.MascotaId = new SelectList(db.Mascota, "Id", "Nombre", defuncion.MascotaId);
+
+            return View(defuncion);
         }
 
-        // GET: VW_Atencion/Delete/5
+        // GET: Defuncions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            if (vW_Atencion == null)
+            Defuncion defuncion = db.Defuncion.Find(id);
+            if (defuncion == null)
             {
                 return HttpNotFound();
             }
-            return View(vW_Atencion);
+            return View(defuncion);
         }
 
-        // POST: VW_Atencion/Delete/5
+        // POST: Defuncions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            db.VW_Atencion.Remove(vW_Atencion);
+            Defuncion defuncion = db.Defuncion.Find(id);
+            db.Defuncion.Remove(defuncion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

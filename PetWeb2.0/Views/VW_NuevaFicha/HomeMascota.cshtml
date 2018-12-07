@@ -41,6 +41,7 @@
         <a class="navbar-brand" href="#">
             Home Mascota
         </a>
+        @Html.ActionLink("Defuncion", "Create", "Defuncions", "Defuncions", new { Microchip = Model.Microchip })
     </nav>
     <div class="container" id="PrincipalDatos">
 
@@ -141,13 +142,13 @@
 
     <div id="Direcciones">
         <div class="row text-center">
-            <div class="col-sm-4" >
+            <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title ">Ficha Clinica</h5>
                         <p class="card-text">Visualiza toda la informacion medica de la mascota</p>
-                        <button class="btn btn-dark"> @Html.ActionLink("Ver","FichaClinica", new { Microchip = Model.Microchip }) </button>
-                       
+                        <button class="btn btn-dark"> @Html.ActionLink("Ver", "FichaClinica", new { Microchip = Model.Microchip }) </button>
+
                     </div>
                 </div>
             </div>
@@ -156,16 +157,25 @@
                     <div class="card-body">
                         <h5 class="card-title">Atenciones Examenes</h5>
                         <p class="card-text">Visualiza las atenciones que se le realizaron a las mascotas en el contexto del examen clinico</p>
-                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Examenes","Index", "VW_Atencion", new { Microchip = Model.Microchip })</button>
+                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Examenes", "Index", "VW_Atencion")</button>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Atenciones Desparacitación</h5>
+                        <p class="card-text">Visualiza las atenciones de desparacitaciones de las mascotas</p>
+                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Desparacitacion", "Index", "VW_ControlDesparacitacion")</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Atenciones Vacunas</h5>
+                        <p class="card-text">Visualiza la lista de atenciones de vacunacion de las mascotas.</p>
+                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Vacunas", "Index", "VW_ControlVacuna")</button>
                     </div>
                 </div>
             </div>

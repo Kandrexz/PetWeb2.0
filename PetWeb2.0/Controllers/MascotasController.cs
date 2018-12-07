@@ -58,7 +58,7 @@ namespace PetWeb2._0.Controllers
                 
                 db.SaveChanges();
                 
-                return RedirectToAction("HomeInscripcion", "VW_NuevaFicha", new {microchip = mascota.Microchip });
+                return RedirectToAction("Index", "VW_NuevaFicha", new {microchip = mascota.Microchip });
             }
 
             ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Rut", mascota.Rut);

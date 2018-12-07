@@ -14,6 +14,54 @@
 
 }
 
+
+@if (Request.IsAuthenticated)
+{
+    <br />
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="card text-center col-lg-5" id="Card">
+                <div class="card-header">
+                    PROTECCIÓN DE ANIMALES
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ley 20.380</h5>
+                    <p class="card-text">
+                        Artículo 1°.- Esta ley establece normas destinadas a conocer, proteger y respetar a los animales, como seres vivos
+                        y parte de la naturaleza, con el fin de darles un trato adecuado y evitarles sufrimientos innecesarios.
+
+                        El reglamento definirá las distintas categorías de animales domésticos y silvestres, según especie.
+                    </p>
+                    <a href="https://www.leychile.cl/Navegar?idNorma=1006858" class="btn btn-primary">Ver Mas</a>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+            <br>
+            <div class="card text-center col-lg-5" id="Card">
+                <div class="card-header">
+                    TENENCIA RESPONSABLE DE MASCOTAS Y ANIMALES DE COMPAÑÍA
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ley 21.020</h5>
+                    <p class="card-text">
+                        Artículo 1°.- Esta ley tiene por objeto establecer normas destinadas a:
+
+                        1) Determinar las obligaciones y derechos de los responsables de animales de compañía.
+                        2) Proteger la salud y el bienestar animal mediante la tenencia responsable.
+                        3) Proteger la salud pública, la seguridad de las personas, el medio ambiente y las áreas naturales
+                        protegidas, aplicando medidas para el control de la población de mascotas o animales de compañía.
+                        4) Regular la responsabilidad por los daños a las personas y a la propiedad que sean consecuencia
+                        de la acción de mascotas o animales de compañía.
+                    </p>
+                    <a href="https://www.leychile.cl/Navegar?idNorma=1106037" class="btn btn-primary">Ver Mas</a>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+}
+
+
 <script>
     $('.carousel').carousel()
 </script>

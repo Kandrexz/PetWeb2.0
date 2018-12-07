@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PetWeb2._0.Models.ControlDesparacitaciones>
+﻿@model IEnumerable<PetWeb2._0.Models.ControlVacuna>
 
 <p class="row justify-content-center">
     @Html.ActionLink("Create New", "Create")
@@ -22,7 +22,7 @@
             <thead class=" thead-dark ">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Peso)
+                        @Html.DisplayNameFor(model => model.Temperatura)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Fecha)
@@ -40,7 +40,7 @@
                         @Html.DisplayNameFor(model => model.ViaAdministracion)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Desparacitador)
+                        @Html.DisplayNameFor(model => model.Vacuna)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Mascota.Nombre)
@@ -49,36 +49,41 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr class="bg-success">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Peso)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Fecha)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProximaFecha)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Hora)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Dosis)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ViaAdministracion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Desparacitador)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Mascota.Nombre)
-                        </td>
-                    </tr>
-                }
-            </tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="bg-success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Temperatura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProximaFecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dosis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ViaAdministracion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vacuna)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mascota.Nombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+            <tbody
         </table>
     </div>
 </body>

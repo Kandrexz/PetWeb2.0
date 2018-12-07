@@ -20,7 +20,7 @@ namespace PetWeb2._0.Models
         public Nullable<System.DateTime> FechaDefuncion { get; set; }
         public string Defuncion1 { get; set; }
         public Nullable<int> MascotaId { get; set; }
-        public Nullable<int> MascotaMicrochip { get; set; }
+        public int MascotaMicrochip { get; set; }
     
         public virtual Mascota Mascota { get; set; }
     }

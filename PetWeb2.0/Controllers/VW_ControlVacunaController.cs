@@ -10,107 +10,107 @@ using PetWeb2._0.Models;
 
 namespace PetWeb2._0.Controllers
 {
-    public class VW_AtencionController : Controller
+    public class VW_ControlVacunaController : Controller
     {
         private PetWebEntities db = new PetWebEntities();
 
-        // GET: VW_Atencion
+        // GET: VW_ControlVacuna
         public ActionResult Index()
         {
-            return PartialView(db.VW_Atencion.ToList());
+            return PartialView(db.VW_ControlVacuna.ToList());
         }
 
-        // GET: VW_Atencion/Details/5
+        // GET: VW_ControlVacuna/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            if (vW_Atencion == null)
+            VW_ControlVacuna vW_ControlVacuna = db.VW_ControlVacuna.Find(id);
+            if (vW_ControlVacuna == null)
             {
                 return HttpNotFound();
             }
-            return View(vW_Atencion);
+            return View(vW_ControlVacuna);
         }
 
-        // GET: VW_Atencion/Create
+        // GET: VW_ControlVacuna/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: VW_Atencion/Create
+        // POST: VW_ControlVacuna/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nombre,Microchip,Anamnesis,Diagnostico,Tratamiento,Fecha,Hora")] VW_Atencion vW_Atencion)
+        public ActionResult Create([Bind(Include = "Id,Fecha_Modificación,Hora_Modificación,Nombre,Descripción,Via_Administracion,Dosis,Fecha,ProximaFecha")] VW_ControlVacuna vW_ControlVacuna)
         {
             if (ModelState.IsValid)
             {
-                db.VW_Atencion.Add(vW_Atencion);
+                db.VW_ControlVacuna.Add(vW_ControlVacuna);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(vW_Atencion);
+            return View(vW_ControlVacuna);
         }
 
-        // GET: VW_Atencion/Edit/5
+        // GET: VW_ControlVacuna/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            if (vW_Atencion == null)
+            VW_ControlVacuna vW_ControlVacuna = db.VW_ControlVacuna.Find(id);
+            if (vW_ControlVacuna == null)
             {
                 return HttpNotFound();
             }
-            return View(vW_Atencion);
+            return View(vW_ControlVacuna);
         }
 
-        // POST: VW_Atencion/Edit/5
+        // POST: VW_ControlVacuna/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Nombre,Microchip,Anamnesis,Diagnostico,Tratamiento,Fecha,Hora")] VW_Atencion vW_Atencion)
+        public ActionResult Edit([Bind(Include = "Id,Fecha_Modificación,Hora_Modificación,Nombre,Descripción,Via_Administracion,Dosis,Fecha,ProximaFecha")] VW_ControlVacuna vW_ControlVacuna)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vW_Atencion).State = EntityState.Modified;
+                db.Entry(vW_ControlVacuna).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vW_Atencion);
+            return View(vW_ControlVacuna);
         }
 
-        // GET: VW_Atencion/Delete/5
+        // GET: VW_ControlVacuna/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            if (vW_Atencion == null)
+            VW_ControlVacuna vW_ControlVacuna = db.VW_ControlVacuna.Find(id);
+            if (vW_ControlVacuna == null)
             {
                 return HttpNotFound();
             }
-            return View(vW_Atencion);
+            return View(vW_ControlVacuna);
         }
 
-        // POST: VW_Atencion/Delete/5
+        // POST: VW_ControlVacuna/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VW_Atencion vW_Atencion = db.VW_Atencion.Find(id);
-            db.VW_Atencion.Remove(vW_Atencion);
+            VW_ControlVacuna vW_ControlVacuna = db.VW_ControlVacuna.Find(id);
+            db.VW_ControlVacuna.Remove(vW_ControlVacuna);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

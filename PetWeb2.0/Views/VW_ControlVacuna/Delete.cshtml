@@ -1,4 +1,4 @@
-﻿@model PetWeb2._0.Models.VW_Atencion
+﻿@model PetWeb2._0.Models.VW_ControlVacuna
 
 @{
     ViewBag.Title = "Delete";
@@ -9,9 +9,25 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>VW_Atencion</h4>
+    <h4>VW_ControlVacuna</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Modificación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Modificación)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_Modificación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_Modificación)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -21,27 +37,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Anamnesis)
+            @Html.DisplayNameFor(model => model.Descripción)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Anamnesis)
+            @Html.DisplayFor(model => model.Descripción)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Diagnostico)
+            @Html.DisplayNameFor(model => model.Via_Administracion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Diagnostico)
+            @Html.DisplayFor(model => model.Via_Administracion)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Tratamiento)
+            @Html.DisplayNameFor(model => model.Dosis)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tratamiento)
+            @Html.DisplayFor(model => model.Dosis)
         </dd>
 
         <dt>
@@ -53,11 +69,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Hora)
+            @Html.DisplayNameFor(model => model.ProximaFecha)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hora)
+            @Html.DisplayFor(model => model.ProximaFecha)
         </dd>
 
     </dl>

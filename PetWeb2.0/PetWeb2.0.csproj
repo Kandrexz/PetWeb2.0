@@ -200,6 +200,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactoesController.cs" />
     <Compile Include="Controllers\ControlDesparacitacionesController.cs" />
+    <Compile Include="Controllers\ControlVacunasController.cs" />
+    <Compile Include="Controllers\DefuncionsController.cs" />
     <Compile Include="Controllers\DueñoMascotaController.cs" />
     <Compile Include="Controllers\ExamenClinicoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +211,9 @@
     <Compile Include="Controllers\UbicacionsController.cs" />
     <Compile Include="Controllers\VeterinariasController.cs" />
     <Compile Include="Controllers\VW_AtencionController.cs" />
+    <Compile Include="Controllers\VW_ControlDesparacitacionController.cs" />
+    <Compile Include="Controllers\VW_ControlVacunaController.cs" />
+    <Compile Include="Controllers\VW_DefuncionesController.cs" />
     <Compile Include="Controllers\VW_NuevaFichaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -273,16 +278,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\NUEVAFICHA.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Raza.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sucursal.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ubicacion.cs">
@@ -474,11 +473,6 @@
     <Content Include="Views\Mascotas\Delete.cshtml" />
     <Content Include="Views\Mascotas\Details.cshtml" />
     <Content Include="Views\Mascotas\Create.cshtml" />
-    <Content Include="Views\VW_Atencion\Create.cshtml" />
-    <Content Include="Views\VW_Atencion\Delete.cshtml" />
-    <Content Include="Views\VW_Atencion\Details.cshtml" />
-    <Content Include="Views\VW_Atencion\Edit.cshtml" />
-    <Content Include="Views\VW_Atencion\Index.cshtml" />
     <Content Include="Views\VW_NuevaFicha\HomeInscripcion.cshtml" />
     <Content Include="Views\Mascotas\Edit.cshtml" />
     <Content Include="Views\Mascotas\Index.cshtml" />
@@ -487,6 +481,35 @@
     <Content Include="Views\ControlDesparacitaciones\Create.cshtml" />
     <Content Include="Views\ControlDesparacitaciones\Index.cshtml" />
     <Content Include="Views\ControlDesparacitaciones\Edit.cshtml" />
+    <Content Include="Views\Defuncions\Delete.cshtml" />
+    <Content Include="Views\Defuncions\Details.cshtml" />
+    <Content Include="Views\Defuncions\Edit.cshtml" />
+    <Content Include="Views\Defuncions\Index.cshtml" />
+    <Content Include="Views\VW_Defunciones\Delete.cshtml" />
+    <Content Include="Views\VW_Defunciones\Details.cshtml" />
+    <Content Include="Views\VW_Defunciones\Edit.cshtml" />
+    <Content Include="Views\VW_Defunciones\Index.cshtml" />
+    <Content Include="Views\Defuncions\Create.cshtml" />
+    <Content Include="Views\VW_Atencion\Create.cshtml" />
+    <Content Include="Views\VW_Atencion\Delete.cshtml" />
+    <Content Include="Views\VW_Atencion\Details.cshtml" />
+    <Content Include="Views\VW_Atencion\Edit.cshtml" />
+    <Content Include="Views\VW_Atencion\Index.cshtml" />
+    <Content Include="Views\VW_ControlDesparacitacion\Create.cshtml" />
+    <Content Include="Views\VW_ControlDesparacitacion\Delete.cshtml" />
+    <Content Include="Views\VW_ControlDesparacitacion\Details.cshtml" />
+    <Content Include="Views\VW_ControlDesparacitacion\Edit.cshtml" />
+    <Content Include="Views\VW_ControlDesparacitacion\Index.cshtml" />
+    <Content Include="Views\VW_ControlVacuna\Create.cshtml" />
+    <Content Include="Views\VW_ControlVacuna\Delete.cshtml" />
+    <Content Include="Views\VW_ControlVacuna\Details.cshtml" />
+    <Content Include="Views\VW_ControlVacuna\Edit.cshtml" />
+    <Content Include="Views\ControlVacunas\Create.cshtml" />
+    <Content Include="Views\ControlVacunas\Delete.cshtml" />
+    <Content Include="Views\ControlVacunas\Details.cshtml" />
+    <Content Include="Views\ControlVacunas\Edit.cshtml" />
+    <Content Include="Views\ControlVacunas\Index.cshtml" />
+    <Content Include="Views\VW_ControlVacuna\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

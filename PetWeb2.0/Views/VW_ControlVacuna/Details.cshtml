@@ -1,0 +1,83 @@
+﻿@model PetWeb2._0.Models.VW_ControlVacuna
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VW_ControlVacuna</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Modificación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Modificación)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_Modificación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_Modificación)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripción)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Via_Administracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Via_Administracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProximaFecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProximaFecha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -13,14 +13,14 @@
     {
         @Html.AntiForgeryToken()
 
-       
+
     }
 }
 else
 {
 
-    
-            <button type="button" class="btn btn-dark" >@Html.ActionLink("Registrarse", "Create", "Veterinarias", routeValues: null, htmlAttributes: new { id = "registerLink", style = "color:#43EBD9; text-decoration:none;" })</button>
-            <button type="button" class="btn btn-dark">@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "color:#43EBD9; text-decoration:none;" })</button>
-     
+
+    <button type="button" class="btn btn-dark">@Html.ActionLink("Registrarse", "Create", "Veterinarias", routeValues: null, htmlAttributes: new { id = "registerLink", style = "color:#43EBD9; text-decoration:none;" })</button>
+    <button type="button" class="btn btn-dark">@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "color:#43EBD9; text-decoration:none;" })</button>
+
 }

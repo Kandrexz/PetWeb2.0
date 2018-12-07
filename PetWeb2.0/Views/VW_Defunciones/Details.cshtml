@@ -1,0 +1,83 @@
+﻿@model PetWeb2._0.Models.VW_Defunciones
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VW_Defunciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Dueño)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Dueño)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido_Dueño)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido_Dueño)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rut_Dueño)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rut_Dueño)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Mascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Mascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion_Defuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion_Defuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Causa_defuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Causa_defuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Defuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Defuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Defuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Defuncion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Numero_Microchip }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
