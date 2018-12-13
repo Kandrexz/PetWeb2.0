@@ -39,7 +39,7 @@ namespace PetWeb2._0.Controllers
         // GET: DueñoMascota/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: DueñoMascota/Create

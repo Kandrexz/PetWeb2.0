@@ -42,7 +42,7 @@ namespace PetWeb2._0.Controllers
             ViewBag.Rut = new SelectList(db.DueñoMascota, "Rut", "Rut");
             ViewBag.Especie = new SelectList(db.Especie, "Id", "Tipo");
             ViewBag.Raza = new SelectList(db.Raza, "Id", "Nombre");
-            return View();
+            return PartialView();
         }
 
         // POST: Mascotas/Create

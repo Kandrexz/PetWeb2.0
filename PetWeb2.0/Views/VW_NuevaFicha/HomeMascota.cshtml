@@ -9,8 +9,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <style>
         body {
-           
-            background: url(../../Content/Icon/Fondo.jpg);
+            background: url(../../Content/Icon/Fondo.jpg );
+            background-size: 100% 100%;
+            background-attachment: fixed;
         }
         #Datos {
             background: rgba(0, 0, 0, 0.6);
@@ -24,8 +25,8 @@
             padding-top:50px;
         }
         #Direcciones {
-            padding-left: 150px;
-            padding-right: 150px;
+            padding-left: 100px;
+            padding-right: 100px;
         }
         .card {
             background: rgba(0, 0, 0, 0.6);
@@ -37,165 +38,211 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            Home Mascota
-        </a>
-        @Html.ActionLink("Defuncion", "Create", "Defuncions", "Defuncions", new { Microchip = Model.Microchip })
-    </nav>
-    <div class="container" id="PrincipalDatos">
 
+    <div id="Menu" style="background: rgba(0, 0, 0, 0.7);">
+
+
+
+        <nav class="navbar navbar-dark " style="background-color:teal;">
+            <h2>Sistema Web Veterinario PetWeb</h2>
+           
+            <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
+
+        </nav>
         <div class="row">
+            <div class="col-2 " style="background-color:teal;">
+                <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Nueva Mascota", "Create", "Mascota", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Defunción", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Leyes", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
 
-            <div class="col">
-                <div id="Datos">
-                    <h3>Datos Dueño</h3>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Nombre)
-                        @Html.DisplayFor(model => model.Nombre)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Apellido)
-                        @Html.DisplayFor(model => model.Apellido)
-                    </dt>
-
-
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Rut)
-                        @Html.DisplayFor(model => model.Rut)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Fono_Contacto)
-                        @Html.DisplayFor(model => model.Fono_Contacto)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayNameFor(model => model.Region)
-                        @Html.DisplayFor(model => model.Region)
-                    </dd>
-
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Ciudad)
-                        @Html.DisplayFor(model => model.Ciudad)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Numero)
-                        @Html.DisplayFor(model => model.Numero)
-                    </dt>
 
                 </div>
-
             </div>
-            <div class="col">
-
-            </div>
-            <div class="col">
-                <div id="Datos">
-
-                    <h3>Datos Mascota</h3>
-                    @Html.DisplayNameFor(model => model.Microchip)
-                    @Html.DisplayFor(model => model.Microchip)
-                    </dt>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Nombre_Mascota)
-                        @Html.DisplayFor(model => model.Nombre_Mascota)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FechaNacimiento)
-                        @Html.DisplayFor(model => model.FechaNacimiento)
-                    </dt>
 
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Peso)
-                        @Html.DisplayFor(model => model.Peso)
-                    </dt>
+            <div class="col-10" style="padding:10px;">
+                <div class="container" id="PrincipalDatos">
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Sexo)
-                        @Html.DisplayFor(model => model.Sexo)
-                    </dt>
+                    <div class="row">
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Tipo)
-                        @Html.DisplayFor(model => model.Tipo)
-                    </dt>
+                        <div class="col-5">
+                            <div id="Datos">
+                                <h3>Datos Dueño</h3>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Nombre)
+                                    @Html.DisplayFor(model => model.Nombre)
+                                </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Raza)
-                        @Html.DisplayFor(model => model.Raza)
-                        
-                    </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Apellido)
+                                    @Html.DisplayFor(model => model.Apellido)
+                                </dt>
 
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Rut)
+                                    @Html.DisplayFor(model => model.Rut)
+                                </dt>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Fono_Contacto)
+                                    @Html.DisplayFor(model => model.Fono_Contacto)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayNameFor(model => model.Region)
+                                    @Html.DisplayFor(model => model.Region)
+                                </dd>
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Ciudad)
+                                    @Html.DisplayFor(model => model.Ciudad)
+                                </dt>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Numero)
+                                    @Html.DisplayFor(model => model.Numero)
+                                </dt>
+
+                            </div>
+
+                        </div>
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-5">
+                            <div id="Datos">
+
+                                <h3>Datos Mascota</h3>
+                                @Html.DisplayNameFor(model => model.Microchip)
+                                @Html.DisplayFor(model => model.Microchip)
+                                </dt>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Nombre_Mascota)
+                                    @Html.DisplayFor(model => model.Nombre_Mascota)
+                                </dt>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                                    @Html.DisplayFor(model => model.FechaNacimiento)
+                                </dt>
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Peso)
+                                    @Html.DisplayFor(model => model.Peso)
+                                </dt>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Sexo)
+                                    @Html.DisplayFor(model => model.Sexo)
+                                </dt>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Tipo)
+                                    @Html.DisplayFor(model => model.Tipo)
+                                </dt>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Raza)
+                                    @Html.DisplayFor(model => model.Raza)
+
+                                </dt>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <div id="Direcciones">
+                    <div class="row text-center">
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title ">Ficha Clinica</h5>
+                                    <p class="card-text">Visualiza toda la informacion medica de la mascota</p>
+                                    <button class="btn btn-dark"> @Html.ActionLink("Ver", "FichaClinica", new { Microchip = Model.Microchip }) </button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Atenciones Examenes</h5>
+                                    <p class="card-text">Visualiza las atenciones que se le realizaron a las mascotas en el contexto del examen clinico</p>
+                                    <button class="btn btn-dark">@Html.ActionLink("Atenciones Examenes", "Index", "VW_Atencion")</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Atenciones Desparacitación</h5>
+                                    <p class="card-text">Visualiza las atenciones de desparacitaciones de las mascotas</p>
+                                    <button class="btn btn-dark">@Html.ActionLink("Atenciones Desparacitacion", "Index", "VW_ControlDesparacitacion")</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Atenciones Vacunas</h5>
+                                    <p class="card-text">Visualiza la lista de atenciones de vacunacion de las mascotas.</p>
+                                    <button class="btn btn-dark">@Html.ActionLink("Atenciones Vacunas", "Index", "VW_ControlVacuna")</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Defuncion de Mascota</h5>
+                                    <p class="card-text">Formulario de ingreso de la defuncion de mascota</p>
+                                    <button class="btn btn-dark"> @Html.ActionLink("Defuncion", "Create", "Defuncions", "Defuncions", new { Microchip = Model.Microchip })</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <br />
-    <br />
-
-    <div id="Direcciones">
-        <div class="row text-center">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title ">Ficha Clinica</h5>
-                        <p class="card-text">Visualiza toda la informacion medica de la mascota</p>
-                        <button class="btn btn-dark"> @Html.ActionLink("Ver", "FichaClinica", new { Microchip = Model.Microchip }) </button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Atenciones Examenes</h5>
-                        <p class="card-text">Visualiza las atenciones que se le realizaron a las mascotas en el contexto del examen clinico</p>
-                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Examenes", "Index", "VW_Atencion")</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Atenciones Desparacitación</h5>
-                        <p class="card-text">Visualiza las atenciones de desparacitaciones de las mascotas</p>
-                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Desparacitacion", "Index", "VW_ControlDesparacitacion")</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Atenciones Vacunas</h5>
-                        <p class="card-text">Visualiza la lista de atenciones de vacunacion de las mascotas.</p>
-                        <button class="btn btn-dark">@Html.ActionLink("Atenciones Vacunas", "Index", "VW_ControlVacuna")</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-   
-
-
-
-
-
-
 
 </body>
 
 
 
 
-<p>
-    
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
