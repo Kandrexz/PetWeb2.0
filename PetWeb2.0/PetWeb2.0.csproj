@@ -510,6 +510,7 @@
     <Content Include="Views\ControlVacunas\Edit.cshtml" />
     <Content Include="Views\ControlVacunas\Index.cshtml" />
     <Content Include="Views\VW_ControlVacuna\Index.cshtml" />
+    <Content Include="Views\Home\Leyees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

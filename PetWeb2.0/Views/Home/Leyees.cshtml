@@ -1,0 +1,115 @@
+﻿
+<head>
+    <title>Home de petweb</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<style>
+
+    #Card {
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        color: aliceblue;
+    }
+</style>
+<body style="background: url(../../Content/Icon/Fondo.jpg); background-size:100% 100%; background-attachment:fixed; ">
+    <div id="Menu" style="background: rgba(0, 0, 0, 0.7);">
+
+
+
+        <nav class="navbar navbar-dark " style="background-color:teal;">
+            <h2>Sistema Web Veterinario PetWeb</h2>
+            <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
+
+        </nav>
+        <div class="row">
+            <div class="col-2 " style="background-color:teal;">
+                <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Nueva Mascota", "Create", "Mascotas", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Defunción", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Leyes", "Leyees", "Home", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+            <div class="col-10">
+                @if (Request.IsAuthenticated)
+                {
+                    <br />
+                    <div class="container">
+                        <div class="row justify-content-center ">
+                            <div class="card text-center col-lg-5" id="Card" style="display:block;">
+                                <div class="card-header">
+                                    PROTECCIÓN DE ANIMALES
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ley 20.380</h5>
+                                    <p class="card-text">
+                                        Artículo 1°.- Esta ley establece normas destinadas a conocer, proteger y respetar a los animales, como seres vivos
+                                        y parte de la naturaleza, con el fin de darles un trato adecuado y evitarles sufrimientos innecesarios.
+
+                                        El reglamento definirá las distintas categorías de animales domésticos y silvestres, según especie.
+                                    </p>
+                                    <a href="https://www.leychile.cl/Navegar?idNorma=1006858" class="btn btn-primary">Ver Mas</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2"></div>
+                            <br>
+                            <div class="card text-center col-lg-5" id="Card">
+                                <div class="card-header">
+                                    TENENCIA RESPONSABLE DE MASCOTAS Y ANIMALES DE COMPAÑÍA
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ley 21.020</h5>
+                                    <p class="card-text">
+                                        Artículo 1°.- Esta ley tiene por objeto establecer normas destinadas a:
+
+                                        1) Determinar las obligaciones y derechos de los responsables de animales de compañía.
+                                        2) Proteger la salud y el bienestar animal mediante la tenencia responsable.
+                                        3) Proteger la salud pública, la seguridad de las personas, el medio ambiente y las áreas naturales
+                                        protegidas, aplicando medidas para el control de la población de mascotas o animales de compañía.
+                                        4) Regular la responsabilidad por los daños a las personas y a la propiedad que sean consecuencia
+                                        de la acción de mascotas o animales de compañía.
+                                    </p>
+                                    <a href="https://www.leychile.cl/Navegar?idNorma=1106037" class="btn btn-primary">Ver Mas</a>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</body>

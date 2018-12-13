@@ -6,57 +6,114 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</head>
-
-<body style="background:url(../../Content/Icon/Fondo.jpg); padding:80px;">
-
-    <table class="table" style="background-color: rgba(0, 0, 0, 0.6); color:aliceblue;">
-        <tr class="bg-info">
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Anamnesis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diagnostico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tratamiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hora)
-            </th>
-
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Anamnesis)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Diagnostico)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tratamiento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hora)
-                </td>
-
-            </tr>
+    <style>
+        #Menu {
+            height: 100%;
         }
 
-    </table>
+        li {
+            text-align: center;
+            color: teal;
+        }
+    </style>
+</head>
+
+<body style="background:url(../../Content/Icon/Fondo.jpg); background-size:100% 100%; background-attachment:fixed; ">
+
+    <nav class="navbar navbar-dark " style="background-color:teal;">
+        <h2>Sistema Web Veterinario PetWeb</h2>
+        <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
+
+    </nav>
+    <div class="row">
+        <div class="col-2 " style="background-color:teal;">
+            <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nueva Mascota", "Create", "Mascotas", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Defunción", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Leyes", "Leyees", "Home", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+        <div class="col-10">
+            <table class="table" style="background-color: rgba(0, 0, 0, 0.6); color:aliceblue;">
+                <tr class="bg-info">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Anamnesis)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Diagnostico)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tratamiento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hora)
+                    </th>
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Anamnesis)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Diagnostico)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tratamiento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hora)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+
 </body>

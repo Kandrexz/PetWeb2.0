@@ -3,9 +3,12 @@
 
 <head>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Content/css/Stylo.css" />
     <link rel="stylesheet" href="~/Content/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -18,8 +21,8 @@
     <style>
 
         .f1 {
-            background-color:white;
-            color: black;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: aliceblue;
             border-radius: 12px;
         }
 
@@ -34,146 +37,182 @@
     </style>
 
 </head>
+<body style="background: url(../../Content/Icon/Fondo.jpg); background-size:100% 100%; background-attachment:fixed; ">
+    <div id="Menu" style="background: rgba(0, 0, 0, 0.7);">
 
-<div class="top-content" ">
-    <div class="container">
+        <nav class="navbar navbar-dark " style="background-color:teal;">
+            <h2>Sistema Web Veterinario PetWeb</h2>
+            <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
 
-
-
+        </nav>
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
-                <form role="form" action="" method="post" class="f1">
-                    <h3>Registro de Mascota</h3>
+            <div class="col-2 " style="background-color:teal;">
+                <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Nueva Mascota", "Create", "Mascotas", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Defunción", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
+                    <ul style="list-style:none; " class="dropdown-item">
+                        <li>
+                            @Html.ActionLink("Leyes", "Leyees", "Home", null, new { style = " text-decoration:none; color: white;" })
+                        </li>
+                    </ul>
 
-                    <div class="f1-steps" style="left:0px;">
-                       
-                        <div class="f1-step active">
-                            <div class="f1-step-icon"><i class="fa fa-paw" style="margin-left: 13px;"></i></div>
-                            <p>Datos Mascota</p>
+
+                </div>
+            </div>
+
+
+            <div class="top-content col-10">
+                <div class="container">
+
+
+
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                            <form role="form" action="" method="post" class="f1">
+                                <h3>Registro de Mascota</h3>
+
+                                <div class="f1-steps" style="left:0px;">
+
+                                </div>
+
+                                <fieldset>
+
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+
+
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Microchip, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                        @Html.EditorFor(model => model.Microchip, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Microchip, "", new { @class = "text-danger" })
+
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+
+                                                    @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    @Html.LabelFor(model => model.Peso, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.EditorFor(model => model.Peso, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Peso, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    @Html.LabelFor(model => model.Raza, "Raza", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.DropDownList("Raza", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Raza, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    @Html.LabelFor(model => model.Especie, "Especie", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.DropDownList("Especie", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Especie, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    @Html.LabelFor(model => model.Rut, "Rut", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.DropDownList("Rut", null, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
+
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    @Html.LabelFor(model => model.Estilizado, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                    @Html.EditorFor(model => model.Estilizado, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Estilizado, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="submit" value="Create" class="btn btn-primary" />
+                                            </div>
+
+
+
+                                        </form>
+
+                                    }
+
+
+                                </fieldset>
+                            </form>
                         </div>
-
                     </div>
 
-                    <fieldset>
-
-                        @using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
-
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-
-
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Microchip, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.EditorFor(model => model.Microchip, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Microchip, "", new { @class = "text-danger" })
-
-                                    </div>
-
-
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                               
-
-                            </div>
-                            <div class="form-group">
-                                
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    
-                                    @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.Peso, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.EditorFor(model => model.Peso, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Peso, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.Raza, "Raza", htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.DropDownList("Raza", null, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Raza, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group col-md-2">
-                                    @Html.LabelFor(model => model.Especie, "Especie", htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.DropDownList("Especie", null, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Especie, "", new { @class = "text-danger" })
-                                   
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.Rut, "Rut", htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.DropDownList("Rut", null, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
-
-                                </div>
-                                <div class="form-group col-md-4">
-                                    @Html.LabelFor(model => model.Estilizado, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                                    @Html.EditorFor(model => model.Estilizado, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Estilizado, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-
-
-
-                        </form>
-
-            }
-
-
-                    </fieldset>
-                </form>
+                </div>
             </div>
         </div>
-
     </div>
-</div>
+    </body>
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

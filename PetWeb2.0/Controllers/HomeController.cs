@@ -13,6 +13,11 @@ namespace PetWeb2._0.Controllers
             return View();
         }
 
+        public ActionResult Leyees()
+        {
+            return PartialView();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

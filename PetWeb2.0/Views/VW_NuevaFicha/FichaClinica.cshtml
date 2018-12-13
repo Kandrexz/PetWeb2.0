@@ -9,6 +9,8 @@
     <style>
         body {
             background: url(../../Content/Icon/Fondo.jpg);
+            background-size: 100% 100%;
+            background-attachment: fixed;
         }
 
         #Datos {
@@ -28,117 +30,157 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            Ficha clinica
-        </a>
+
+    <nav class="navbar navbar-dark " style="background-color:teal;">
+        <h2>Sistema Web Veterinario PetWeb</h2>
+        <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
     </nav>
-    <div class="container" id="PrincipalDatos">
+    <div class="row">
+        <div class="col-2 " style="background-color:teal;">
+            <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nueva Mascota", "Create", "Mascotas", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Defunción", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Leyes", "Leyees", "Home", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
 
-        <div class="row">
 
-            <div class="col">
-                <div id="Datos">
-                    <h3>Datos Dueño</h3>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Nombre)
-                        @Html.DisplayFor(model => model.Nombre)
-                    </dt>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="container" id="PrincipalDatos">
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Apellido)
-                        @Html.DisplayFor(model => model.Apellido)
-                    </dt>
+                <div class="row">
 
+                    <div class="col">
+                        <div id="Datos">
+                            <h3>Datos Dueño</h3>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                                @Html.DisplayFor(model => model.Nombre)
+                            </dt>
 
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Rut)
-                        @Html.DisplayFor(model => model.Rut)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Fono_Contacto)
-                        @Html.DisplayFor(model => model.Fono_Contacto)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayNameFor(model => model.Region)
-                        @Html.DisplayFor(model => model.Region)
-                    </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Apellido)
+                                @Html.DisplayFor(model => model.Apellido)
+                            </dt>
 
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Ciudad)
-                        @Html.DisplayFor(model => model.Ciudad)
-                    </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Numero)
-                        @Html.DisplayFor(model => model.Numero)
-                    </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Rut)
+                                @Html.DisplayFor(model => model.Rut)
+                            </dt>
 
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Fono_Contacto)
+                                @Html.DisplayFor(model => model.Fono_Contacto)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayNameFor(model => model.Region)
+                                @Html.DisplayFor(model => model.Region)
+                            </dd>
+
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Ciudad)
+                                @Html.DisplayFor(model => model.Ciudad)
+                            </dt>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Numero)
+                                @Html.DisplayFor(model => model.Numero)
+                            </dt>
+
+                        </div>
+
+                    </div>
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                        <div id="Datos">
+
+                            <h3>Datos Mascota</h3>
+                            @Html.DisplayNameFor(model => model.Microchip)
+                            @Html.DisplayFor(model => model.Microchip)
+                            </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Nombre_Mascota)
+                                @Html.DisplayFor(model => model.Nombre_Mascota)
+                            </dt>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FechaNacimiento)
+                                @Html.DisplayFor(model => model.FechaNacimiento)
+                            </dt>
+
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Peso)
+                                @Html.DisplayFor(model => model.Peso)
+                            </dt>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Sexo)
+                                @Html.DisplayFor(model => model.Sexo)
+                            </dt>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Tipo)
+                                @Html.DisplayFor(model => model.Tipo)
+                            </dt>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Raza)
+                                @Html.DisplayFor(model => model.Raza)
+
+                            </dt>
+
+                        </div>
+                    </div>
                 </div>
-
             </div>
-            <div class="col">
-
-            </div>
-            <div class="col">
-                <div id="Datos">
-
-                    <h3>Datos Mascota</h3>
-                    @Html.DisplayNameFor(model => model.Microchip)
-                    @Html.DisplayFor(model => model.Microchip)
-                    </dt>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Nombre_Mascota)
-                        @Html.DisplayFor(model => model.Nombre_Mascota)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FechaNacimiento)
-                        @Html.DisplayFor(model => model.FechaNacimiento)
-                    </dt>
-
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Peso)
-                        @Html.DisplayFor(model => model.Peso)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Sexo)
-                        @Html.DisplayFor(model => model.Sexo)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Tipo)
-                        @Html.DisplayFor(model => model.Tipo)
-                    </dt>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Raza)
-                        @Html.DisplayFor(model => model.Raza)
-
-                    </dt>
-
+            <div style="background-color: rgba(0, 0, 0, 0.6);">
+                <div>
+                    @Html.Action("Index", "ExamenClinicoes")
+                </div>
+                <div>
+                    @Html.Action("Index", "ControlDesparacitaciones")
+                </div>
+                <div>
+                    @Html.Action("Index", "ControlVacunas")
                 </div>
             </div>
         </div>
-    </div>
-    <div style="background-color: rgba(0, 0, 0, 0.6);">
-        <div>
-            @Html.Action("Index", "ExamenClinicoes")
+
         </div>
-        <div>
-            @Html.Action("Index", "ControlDesparacitaciones")
-        </div>
-        <div>
-            @Html.Action("Index", "ControlVacunas")
-        </div>
-    </div>
-  
 </body>
 
 
