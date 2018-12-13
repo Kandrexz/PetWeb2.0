@@ -1,81 +1,141 @@
 ﻿@model IEnumerable<PetWeb2._0.Models.VW_Defunciones>
 
-<h2>Defunciones</h2>
+@{
+    Layout = null;
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 
 <head>
+    <style>
+        h2{
+            text-align:center;
+        }
+    </style>
     <title>Home de petweb</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
-<table class="table table-hover ">
-    <thead class=" thead-dark ">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre_Dueño)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido_Dueño)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rut_Dueño)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre_Mascota)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacion_Defuncion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Causa_defuncion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha_Defuncion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Defuncion)
-            </th>
-            <th></th>
-        </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tr class="bg-success">
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre_Dueño)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Apellido_Dueño)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rut_Dueño)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre_Mascota)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Observacion_Defuncion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Causa_defuncion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha_Defuncion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Defuncion)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Numero_Microchip }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Numero_Microchip }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Numero_Microchip })
-                </td>
-            </tr>
-        }
+<body style="background: url(../../Content/Icon/Fondo.jpg); background-size:100% 100%; background-attachment:fixed; ">
 
-</table>
+
+    <nav class="navbar navbar-dark " style="background-color:teal;">
+        <h2>Sistema Web Veterinario PetWeb</h2>
+        <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
+
+    </nav>
+
+    <div class="row">
+        <div class="col-2 " style="background-color:teal;">
+            <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nueva Mascota", "Create", "Mascotas", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Defunción", "Index", "VW_Defunciones", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Leyes", "Leyees", "Home", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+        <div class="col-10">
+            <h2>Defunciones</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table table-hover ">
+                <thead class=" thead-dark ">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre_Dueño)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Apellido_Dueño)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Rut_Dueño)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre_Mascota)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Observacion_Defuncion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Causa_defuncion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Fecha_Defuncion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Defuncion)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr class="bg-success">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre_Dueño)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Apellido_Dueño)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rut_Dueño)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre_Mascota)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Observacion_Defuncion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Causa_defuncion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha_Defuncion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Defuncion)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Numero_Microchip }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Numero_Microchip }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Numero_Microchip })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</body>

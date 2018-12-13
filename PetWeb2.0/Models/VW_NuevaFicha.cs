@@ -11,19 +11,24 @@ namespace PetWeb2._0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class VW_NuevaFicha
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int Rut { get; set; }
+        [Display(Name ="Fono Contacto")]
         public int Fono_Contacto { get; set; }
         public string Region { get; set; }
         public string Ciudad { get; set; }
         public string Calle { get; set; }
         public string Numero { get; set; }
+        [Display(Name = "Nombre Mascota")]
         public string Nombre_Mascota { get; set; }
         public int Microchip { get; set; }
+        [Display(Name = "Fecha de Nacimiento")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime FechaNacimiento { get; set; }
         public double Peso { get; set; }
         public string Sexo { get; set; }
