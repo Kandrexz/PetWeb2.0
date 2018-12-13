@@ -1,74 +1,131 @@
 ﻿@model PetWeb2._0.Models.Defuncion
 
+@{
+    Layout = null;
+}
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal" style="background-color: rgba(0, 0, 0, 0.6); color:aliceblue; padding:30px; border-radius: 12px;" >
-        <h4>Defuncion</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ObservacionDefuncion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ObservacionDefuncion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ObservacionDefuncion, "", new { @class = "text-danger" })
+<head>
+    <style>
+        .form {
+            color:aliceblue;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        h4{
+            text-align:center;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background: url(../../Content/Icon/Fondo.jpg); background-size:100% 100%; background-attachment:fixed;" >
+
+    <nav class="navbar navbar-dark " style="background-color:teal;">
+        <h2>Sistema Web Veterinario PetWeb</h2>
+        <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Cerrar sesión</a>
+
+    </nav>
+    <div class="row">
+        <div class="col-2 " style="background-color:teal;">
+            <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Mascotas", "Index", "VW_NuevaFicha", null, new { style = " text-decoration:none; color: white;;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nuevo Cliente", "Create", "DueñoMascota", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Nueva Mascota", "Create", "Mascotas", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Defunción", "Create", "Defuncions", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
+                <ul style="list-style:none; " class="dropdown-item">
+                    <li>
+                        @Html.ActionLink("Leyes", "Leyees", "Home", null, new { style = " text-decoration:none; color: white;" })
+                    </li>
+                </ul>
             </div>
         </div>
+        <div class="col-10 form" >
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CausaDefuncion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CausaDefuncion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CausaDefuncion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-horizontal " style="width:500px; margin-left:30%;">
+                    <h4>Defuncion</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ObservacionDefuncion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ObservacionDefuncion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ObservacionDefuncion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaDefuncion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaDefuncion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaDefuncion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CausaDefuncion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CausaDefuncion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CausaDefuncion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Defuncion1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Defuncion1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Defuncion1, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaDefuncion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FechaDefuncion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FechaDefuncion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MascotaId, "MascotaId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MascotaId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MascotaId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Defuncion1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Defuncion1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Defuncion1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MascotaMicrochip, "MascotaMicrochip", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MascotaMicrochip", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MascotaMicrochip, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MascotaId, "MascotaId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MascotaId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MascotaId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MascotaMicrochip, "MascotaMicrochip", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MascotaMicrochip", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MascotaMicrochip, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Listado", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>

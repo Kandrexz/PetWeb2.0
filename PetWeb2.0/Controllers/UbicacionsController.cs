@@ -54,7 +54,7 @@ namespace PetWeb2._0.Controllers
             {
                 db.Ubicacion.Add(ubicacion);
                 db.SaveChanges();
-                return RedirectToAction("Create","Mascotas");
+                return RedirectToAction("Index","Home");
             }
 
             ViewBag.DueñoMascota = new SelectList(db.DueñoMascota, "Rut", "Rut", ubicacion.DueñoMascota);

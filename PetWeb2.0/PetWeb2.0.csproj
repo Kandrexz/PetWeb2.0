@@ -489,7 +489,6 @@
     <Content Include="Views\VW_Defunciones\Details.cshtml" />
     <Content Include="Views\VW_Defunciones\Edit.cshtml" />
     <Content Include="Views\VW_Defunciones\Index.cshtml" />
-    <Content Include="Views\Defuncions\Create.cshtml" />
     <Content Include="Views\VW_Atencion\Create.cshtml" />
     <Content Include="Views\VW_Atencion\Delete.cshtml" />
     <Content Include="Views\VW_Atencion\Details.cshtml" />
@@ -511,6 +510,7 @@
     <Content Include="Views\ControlVacunas\Index.cshtml" />
     <Content Include="Views\VW_ControlVacuna\Index.cshtml" />
     <Content Include="Views\Home\Leyees.cshtml" />
+    <Content Include="Views\Defuncions\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
