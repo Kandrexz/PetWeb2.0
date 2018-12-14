@@ -1,46 +1,115 @@
 ﻿@model IEnumerable<PetWeb2._0.Models.DueñoMascota>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/_ViewStart.cshtml";
-}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
 
-<h2>Index</h2>
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link href="~/Content/Estilo.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Correo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apellido)
-        </th>
-        <th></th>
-    </tr>
+    <style>
+        #Menu {
+            height: 100%;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Correo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Rut }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Rut }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Rut })
-        </td>
-    </tr>
-}
+        li {
+            text-align: center;
+            color: teal;
+        }
+    </style>
 
-</table>
+
+</head>
+<body style="background: url(../../Content/Icon/Fondo.jpg); background-size:100% 100%; background-attachment:fixed; ">
+
+    @Html.Partial("_LoginPartial")
+    @if (Request.IsAuthenticated)
+    {
+
+        <div id="Menu" style="background: rgba(0, 0, 0, 0.7);">
+
+
+
+            
+            <div class="row">
+
+                <div class="col-1">
+
+                </div>
+                <div class="col-5">
+
+
+
+
+
+                    <p>
+                        @Html.ActionLink("Crear nuevo Cliente", "Create")
+                    </p>
+                    <table class="table table-hover ">
+                        <thead class=" table-primary ">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Correo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Apellido)
+                        </th>
+                        
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr class="table-secondary">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Correo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Apellido)
+                                </td>
+
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+                <div class="col-5">
+                    @Html.Action("Index", "Contactoes")
+                </div>
+                <div class="col-1">
+
+                </div>
+            </div>
+                    </div>
+
+
+
+
+                    }
+
+
+
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <script>
+                        $('#myDropdown').on('show.bs.dropdown', function () {
+                            // do something…
+                        })
+                    </script>
+
+
+
+
+
+
+</body>
+</html>

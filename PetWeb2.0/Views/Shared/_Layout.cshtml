@@ -43,7 +43,7 @@
                 <div class="list-group" id="list-tab" role="tablist" style="width:110%;">
                     <ul style="list-style:none; " class="dropdown-item">
                         <li>
-                            @Html.ActionLink("Home", "Index", "Home", null, new { style = " text-decoration:none; color: white;;" })
+                            @Html.ActionLink("Home", "Index", "DueñoMascota", null, new { style = " text-decoration:none; color: white;;" })
                         </li>
                     </ul>
                     <ul style="list-style:none; " class="dropdown-item">
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="col-10">
-
+                @Html.Action("Index", "DueñoMascota");
             </div>
         </div>
     </div>

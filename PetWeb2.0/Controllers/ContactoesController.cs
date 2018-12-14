@@ -18,7 +18,7 @@ namespace PetWeb2._0.Controllers
         public ActionResult Index()
         {
             var contacto = db.Contacto.Include(c => c.DueñoMascota);
-            return View(contacto.ToList());
+            return PartialView(contacto.ToList());
         }
 
         // GET: Contactoes/Details/5

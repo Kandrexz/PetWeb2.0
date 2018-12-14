@@ -1,17 +1,10 @@
 ﻿@model IEnumerable<PetWeb2._0.Models.Contacto>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/_ViewStart.cshtml";
-}
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo contacto", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover" >
+    <tr class=" table-primary ">
         <th>
             @Html.DisplayNameFor(model => model.Fono)
         </th>
@@ -22,13 +15,13 @@
             @Html.DisplayNameFor(model => model.Apellido)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DueñoMascota.Correo)
+            @Html.DisplayNameFor(model => model.DueñoMascota.Rut)
         </th>
-        <th></th>
+       
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="table-secondary">
         <td>
             @Html.DisplayFor(modelItem => item.Fono)
         </td>
@@ -39,13 +32,9 @@
             @Html.DisplayFor(modelItem => item.Apellido)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DueñoMascota.Correo)
+            @Html.DisplayFor(modelItem => item.DueñoMascota.Rut)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+      
     </tr>
 }
 

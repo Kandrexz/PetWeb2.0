@@ -436,7 +436,6 @@
     <Content Include="Views\DueñoMascota\Delete.cshtml" />
     <Content Include="Views\DueñoMascota\Details.cshtml" />
     <Content Include="Views\DueñoMascota\Edit.cshtml" />
-    <Content Include="Views\DueñoMascota\Index.cshtml" />
     <Content Include="Views\Veterinarias\Delete.cshtml" />
     <Content Include="Views\Veterinarias\Details.cshtml" />
     <Content Include="Views\Veterinarias\Edit.cshtml" />
@@ -466,7 +465,6 @@
     <Content Include="Views\Contactoes\Delete.cshtml" />
     <Content Include="Views\Contactoes\Details.cshtml" />
     <Content Include="Views\Contactoes\Edit.cshtml" />
-    <Content Include="Views\Contactoes\Index.cshtml" />
     <Content Include="Views\Contactoes\Create.cshtml" />
     <Content Include="Views\DueñoMascota\Create.cshtml" />
     <Content Include="Views\Ubicacions\Create.cshtml" />
@@ -511,6 +509,8 @@
     <Content Include="Views\VW_ControlVacuna\Index.cshtml" />
     <Content Include="Views\Home\Leyees.cshtml" />
     <Content Include="Views\Defuncions\Create.cshtml" />
+    <Content Include="Views\DueñoMascota\Index.cshtml" />
+    <Content Include="Views\Contactoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace PetWeb2._0.Controllers
         // GET: DueñoMascota
         public ActionResult Index()
         {
-            return View(db.DueñoMascota.ToList());
+            return PartialView(db.DueñoMascota.ToList());
         }
 
         // GET: DueñoMascota/Details/5
